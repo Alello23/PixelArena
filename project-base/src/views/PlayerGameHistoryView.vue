@@ -1,0 +1,94 @@
+<script setup>
+import { RouterLink } from 'vue-router'
+
+</script>
+
+<template>
+<div class="rounded-column-1" style=" background-color: transparent; border: none; ">
+    <header>
+      <div class="col text-center">
+        <h1>Player Profile</h1>
+     </div>
+    </header>
+<div class="col " style="padding: 0rem;">
+    <div class="row" style="padding: 0rem;">
+        <div class="col-6" style="padding: 0rem; ">
+            <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;" >
+                <h1 >Player information</h1>
+            </div>
+          </div> 
+          <div class="col-6" style="padding: 0rem; ">
+            <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
+                <h1 >Finished games</h1>
+            </div>
+          </div> 
+    </div>
+  
+</div>
+  <div class="col " style="padding: 0rem; ">
+    <div class="row" style="padding: 0rem; ">
+        <div class="col-6" style="border: 5px solid #1E1E1E;">
+            <div class="space_between">
+                <button type="button" class="custom-button" style="background-color: #8C9A45;"> <h3>Name</h3></button>
+              </div>
+              <div class="space_between">
+                <button type="button" class="custom-button" style="background-color: #8C9A45;"><h3>xp</h3> </button>
+              </div> 
+              <div class="space_between">
+                <button type="button" class="custom-button" style="background-color: #8C9A45;"><h3>% games won</h3> </button>
+              </div> 
+        </div>
+        <div class="col-6" style="border: 5px solid #1E1E1E;">
+            <div class="col" style=" max-height: 450px; overflow-y: scroll;"> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game1 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game2 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game3 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game4 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game5 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game6 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game7 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game8 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game9 /infogame</h3> </button>
+                </div> 
+            </div> 
+        </div>
+
+    </div>
+</div>
+   <div class="col" >
+       <div class="row">
+        <div class="col-4 ">
+            <div class="space_between" >
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="space_between" >
+                <RouterLink to="/playersearch" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+              </div>
+        </div>
+        <div class="col-4 ">
+            <div class="space_between" >
+            </div>
+        </div>
+        
+       </div>    
+    </div>
+</div>
+</template>

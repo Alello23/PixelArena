@@ -1,3 +1,42 @@
 * {
   font-family: 'Courier New', Courier, monospace;
 }
+[class*="col"]{
+padding: 1rem;
+/*border: 2px solid red;*/
+color: black;
+}
+.rounded-column-1{
+border-radius: 10px;
+padding: 0rem;
+background-color: #EAEAEA;
+border: 5px solid #1E1E1E;
+color: black;
+}
+.rounded-column-2{
+border-radius: 5px;
+padding: 1rem;
+background-color: #C0D6DF;
+border: 4px solid #1E1E1E;
+color: black;
+}
+.spacer {
+    height: 390px; /* Adjust the height as needed */
+}
+.space_between{
+margin-bottom: 30px; 
+}
+.custom-button {
+    background-color: #EAEAEA; /* Define the default background color */
+    color: #000000; /* Define the default text color */
+    padding: 5px 10px; /* Add padding to create space inside the button */
+    border: 5px solid #1E1E1E;
+    display: block; /* Make the button a block element to expand width */
+    width: 100%; /* Set the button to expand the full width of its container */
+    text-align: center; /* Center-align the text */
+    border-radius: 10px;
+   /* font-size: 16px;  Set the font size */
+}
+.btn-primary{
+background-color: #DECA91;
+}
