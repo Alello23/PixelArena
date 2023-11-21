@@ -7,7 +7,7 @@ import InputComponent from '../components/InputComponent.vue';
     <div class="container" id="LoginBox">
         <div class="row justify-content-center text-center">
             <div class="col-8">
-                <h4 class="mb-2 pb-2">Log In</h4>
+                <h4 class="mb-2 pb-2">Sign Up</h4>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -20,17 +20,22 @@ import InputComponent from '../components/InputComponent.vue';
                 <InputComponent label="Password"></InputComponent>
             </div>
         </div>
-        <div class="row justify-content-center text-center">    
-            <div class="col-12">
-                <router-link to="/home">
-                    <ButtonComponent class="LoginButton" label="Login"></ButtonComponent>
-                </router-link>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <InputComponent label="Confirm password"></InputComponent>
             </div>
+        </div>
+        <div class="row justify-content-center text-center">    
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <router-link to="/home">
+                    <ButtonComponent class="LoginButton" label="Register" color="white" background="#419FD6"></ButtonComponent>
+                </router-link>
+            </div>  
         </div>
     </div>
 </template>
 
-<style scoped>  
+<style scoped>
 @import url('../assets/fonts.css');
 .container{
     border-radius: 15px;
@@ -43,9 +48,8 @@ h4 {
     margin-top: 2rem;
 }
 .LoginButton{
-    margin-top: 4rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
-
 
 </style>

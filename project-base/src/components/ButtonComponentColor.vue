@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
    <button type="button" class="btn">{{label}}</button>
 </template>
@@ -13,15 +11,11 @@ export default {
 </script>
 
 <style scoped>
-.btn:focus{  
-  background-color: white;
-  color: #419FD6;
-  box-shadow: 0 8px 24px 0 white;
-}
+
   .btn{  
   border-radius: 7px;
-  width: 10rem;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -34,14 +28,20 @@ export default {
   justify-content: center;
   text-align: center;
   border: none;
-  background-color: #419FD6;
-  color: white;
+  background-color: #87CEEB;
+  color: black;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 .btn:active,
 
+.btn:focus{  
+  background-color: #419FD6;
+  color: white;
+  box-shadow: 0 8px 24px 0 white;
+}
 .btn:hover{  
-  background-color: white;
-  color: #419FD6;
+  background-color: #419FD6;
+  color: white;
   box-shadow: 0 8px 24px 0 white;
 }
 </style>

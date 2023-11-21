@@ -1,16 +1,20 @@
 <template>
   <div class="input-group">
     <input class="input" required type="text" id="username">
-    <label class="label" for="username">Username</label>
+    <label class="label" for="inputId">{{ label }}</label>
   </div>
 </template>
 
-<style scoped>
-.item-group {
-  font-size: 1.25rem;
-  position: relative;
-  --primary: #87CEEB;
+<script>
+export default {
+  props: {
+    label: String,
+    inputId: String
+  }
 }
+</script>
+
+<style scoped>
 .input {
   all: unset;
   color: black;
@@ -19,7 +23,7 @@
   border-radius: 7px;
   transition: 150ms
     cubic-bezier(0.4, 0, 0.2, 1);
-  width: 150%;
+  width: 100%;
 }
 .label{
   position:absolute;
