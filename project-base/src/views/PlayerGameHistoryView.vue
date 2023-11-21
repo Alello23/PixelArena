@@ -1,6 +1,21 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
+const isSmallDevice = ref(false);
+
+const checkScreenSize = () => {
+  isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
+};
+
+onMounted(() => {
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreenSize);
+});
 </script>
 
 <template>
@@ -11,23 +26,23 @@ import { RouterLink } from 'vue-router'
      </div>
     </header>
 <div class="col " style="padding: 0rem;">
-    <div class="row" style="padding: 0rem;">
-        <div class="col-6" style="padding: 0rem; ">
+    <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem;">
+        <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}" style="padding: 0rem; ">
             <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;" >
                 <h1 >Player information</h1>
             </div>
           </div> 
-          <div class="col-6" style="padding: 0rem; ">
+          <div class="col-6" v-if="!isSmallDevice" style="padding: 0rem; ">
             <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
                 <h1 >Finished games</h1>
             </div>
-          </div> 
+          </div>
     </div>
   
 </div>
-  <div class="col " style="padding: 0rem; ">
-    <div class="row" style="padding: 0rem; ">
-        <div class="col-6" style="border: 5px solid #1E1E1E;">
+  <div class="col" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
+    <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
+        <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}"  style="border: 5px solid #1E1E1E;">
             <div class="space_between">
                 <button type="button" class="custom-button" style="background-color: #8C9A45;"> <h3>Name</h3></button>
               </div>
@@ -38,7 +53,7 @@ import { RouterLink } from 'vue-router'
                 <button type="button" class="custom-button" style="background-color: #8C9A45;"><h3>% games won</h3> </button>
               </div> 
         </div>
-        <div class="col-6" style="border: 5px solid #1E1E1E;">
+        <div class="col-6" v-if="!isSmallDevice" style="border: 5px solid #1E1E1E;">
             <div class="col" style=" max-height: 450px; overflow-y: scroll;"> 
                 <div class="space_between" >
                   <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game1 /infogame</h3></button>
@@ -71,6 +86,46 @@ import { RouterLink } from 'vue-router'
         </div>
 
     </div>
+    <div class="row">
+      <div class="col-12" v-if="isSmallDevice" style="padding: 0rem; ">
+            <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
+                <h1 >Finished games</h1>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-12" v-if="isSmallDevice" style="border: 5px solid #1E1E1E;">
+            <div class="col" style=" max-height: 450px; overflow-y: scroll;"> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game1 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game2 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game3 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game4 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game5 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game6 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game7 /infogame</h3></button>
+                </div>
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game8 /infogame</h3> </button>
+                </div> 
+                <div class="space_between" >
+                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game9 /infogame</h3> </button>
+                </div> 
+            </div> 
+        </div>
+    </div>
 </div>
    <div class="col" >
        <div class="row">
@@ -80,7 +135,7 @@ import { RouterLink } from 'vue-router'
         </div>
         <div class="col-4">
             <div class="space_between" >
-                <RouterLink to="/playersearch" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+                <RouterLink to="/home" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
               </div>
         </div>
         <div class="col-4 ">

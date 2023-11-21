@@ -1,11 +1,11 @@
 <template>
     <div class="card">
-        <div class="row no-gutters">
-            <div class="col-12 col-md-3">
+        <div class="row">
+            <div class="col-3">
                 <img src="src\assets\images\avatar.jpg" class="card-img" alt="Imagen de perfil">
             </div>
-            <div class="col-12 col-md-9">
-                <h5 class="card-title">Nombre de Usuario</h5>
+            <div class="col-9">
+                <h5 class="card-title">Alello23</h5>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

@@ -1,6 +1,22 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import myProfile from '../assets/images/demo01_PixelSky_1920x1080.png';
+import myProfile from '../assets/images/avatar.jpg';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const isSmallDevice = ref(false);
+
+const checkScreenSize = () => {
+  isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
+};
+
+onMounted(() => {
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreenSize);
+});
 </script>
 
 <template>
@@ -8,7 +24,7 @@ import myProfile from '../assets/images/demo01_PixelSky_1920x1080.png';
     <header>
       <div class="col" style="padding: 0rem; ">
         <div class="row" style="padding: 0rem; ">
-          <div class="col-3 " style="padding: 0rem; ">
+          <div class="col" :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem; ">
             <div class="col rounded-column-2 text-center" style="background-color: #87CEEB; padding: 0rem; " >
               <div class="col" >
                 <div class="row">
@@ -29,17 +45,19 @@ import myProfile from '../assets/images/demo01_PixelSky_1920x1080.png';
         </div>
           </div>
       </div>
-      <div class="col-6 text-center">
-        <h1>Profile</h1>
-     </div>
-     <div class="col-3 ">
+      <div class="col text-center" :class="{'col-1': isSmallDevice, 'col-6': !isSmallDevice}">
+        <div v-if="!isSmallDevice">
+        <h1>Profile</h1>     
+        </div>
+      </div> 
+     <div class="col" :class="{'col-1': isSmallDevice, 'col-3': !isSmallDevice}">
       <div class="space_between" >
       </div>
   </div>
     </div>
   </div>
     </header>
-<div class="col-3 " style="padding: 0rem;">
+<div class="col " :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem;">
   
     <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
         <h8 >level X YYYxp</h8>
@@ -47,7 +65,12 @@ import myProfile from '../assets/images/demo01_PixelSky_1920x1080.png';
     <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
       <h8 >Coins</h8>
   </div>
-  </div> 
+  </div>
+  <div class="col-12 text-center" :class="{ 'isSmallDevice': isSmallDevice }">
+        <div v-if="isSmallDevice">
+        <h1>Profile</h1>     
+        </div>
+      </div>  
 </div>
     <div class="col" >
     <div class="row">
@@ -96,8 +119,8 @@ import myProfile from '../assets/images/demo01_PixelSky_1920x1080.png';
         </div>
         <div class="col-4">
             <div class="space_between" >
-              <RouterLink to="/" class="btn btn-success custom-button" ><h4>return</h4></RouterLink>
-              </div>
+              <RouterLink to="/home" class="btn btn-success custom-button" ><h4>return</h4></RouterLink>
+            </div>
         </div>
         <div class="col-4 ">
             <div class="space_between" >

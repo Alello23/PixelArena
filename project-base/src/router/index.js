@@ -40,14 +40,14 @@ const router = createRouter({
       component: () => import('../views/ChangeEquippedAttacksView.vue')
     },
     {
-      path: '/playersearch',
-      name: 'playersearch',
-      component: () => import('../views/PlayerSearchView.vue')
-    },
-    {
       path: '/playergamehistory',
       name: 'playergamehistory',
       component: () => import('../views/PlayerGameHistoryView.vue')
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: () => import('../views/GameView.vue')
     }
   ]
 })

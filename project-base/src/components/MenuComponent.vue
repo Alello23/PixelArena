@@ -1,25 +1,34 @@
 <script setup>
 import ButtonComponentColor from '../components/ButtonComponentColor.vue'
+import shop from '../components/ShopComponent.vue'
+import buy from './BuyAttackComponent.vue'
+import sell from './SellAttackComponent.vue'
+import create from './CreateAttackComponent.vue'
+import confirm from './BuyAttackConfirmationComponent.vue'
 </script>
 
 
 <template>
-    <div class="menu">
-        <div class="row justify-content-left">
-            <ButtonComponentColor label="Play" class="btn" id="playbtn"></ButtonComponentColor>
-        </div>
-        <div class="row">
-            <ButtonComponentColor label="Shop" class="btn"></ButtonComponentColor>
-        </div>
-        <div class="row">
-            <ButtonComponentColor label="Inventory" class="btn"></ButtonComponentColor>
-        </div>
-    </div>
+    <div class="nav flex-column nav-tabs">
+            <router-link to="/home">
+                <ButtonComponentColor label="Play" class="btn" id="playbtn"></ButtonComponentColor>
+            </router-link>
         
+            <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop"></ButtonComponentColor>
+            <shop></shop>
+            <buy></buy>
+            <sell></sell>
+            <create></create>
+            <confirm></confirm>
+            
+            <router-link to="/inventory">
+                <ButtonComponentColor label="Inventory" class="btn"></ButtonComponentColor>
+            </router-link>
+    </div>
 </template>
 
 <style scoped>
-    .menu{
+    .nav{
         background-color: #419FD6;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         width: 13rem;
@@ -33,8 +42,5 @@ import ButtonComponentColor from '../components/ButtonComponentColor.vue'
         margin-right: 1rem;
         margin-bottom: 1rem;
         height: 5rem;
-    }
-    #playbtn{
-        width: 11rem;
     }
 </style>

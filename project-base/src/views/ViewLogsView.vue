@@ -1,5 +1,21 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const isSmallDevice = ref(false);
+
+const checkScreenSize = () => {
+  isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
+};
+
+onMounted(() => {
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreenSize);
+});
 </script>
 
 <template>
@@ -18,33 +34,67 @@ import { RouterLink } from 'vue-router'
 </div>
   <div class="col ">
     <div class="col" style=" max-height: 380px; overflow-y: scroll;"> 
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+      <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">
+        <div v-if="isSmallDevice">
+          <div class="spacer_sides" >
           <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 1</h2></button>
         </div>
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 2</h2> </button>
         </div> 
-        <div class="space_between" style="margin-right:260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 3</h2> </button>
         </div> 
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 4</h2></button>
         </div>
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 5</h2> </button>
         </div> 
-        <div class="space_between" style="margin-right:260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 6</h2> </button>
         </div> 
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 7</h2></button>
         </div>
-        <div class="space_between" style="margin-right: 260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 8</h2> </button>
         </div> 
-        <div class="space_between" style="margin-right:260px; margin-left: 260px;">
+        <div class="spacer_sides">
           <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 9</h2> </button>
         </div> 
+        </div>
+        <div v-else>
+          <div class="spacer_sides" >
+          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 1</h2></button>
+        </div>
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 2</h2> </button>
+        </div> 
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 3</h2> </button>
+        </div> 
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 4</h2></button>
+        </div>
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 5</h2> </button>
+        </div> 
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 6</h2> </button>
+        </div> 
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 7</h2></button>
+        </div>
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 8</h2> </button>
+        </div> 
+        <div class="spacer_sides">
+          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 9</h2> </button>
+        </div> 
+        </div>
+      </div> 
+      
     </div> 
 </div>
    <div class="col" >

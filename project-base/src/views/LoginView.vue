@@ -4,11 +4,11 @@ import RegisterBoxComponent from '../components/RegisterBoxComponent.vue';
 </script>
 
 <template>
- <div class="container">
-  <div class="row justify-content-center full-height">
-    <div class="col-12 align-self-center py-5" id="LoginBox">
-      <div class="section pb-5 pt-5 pt-sm-2 ">
-        <h6 class="mb-0 pb-3 text-center"><span>Log In </span><span>Sign Up</span></h6>
+ <div class="container position-absolute top-50 start-50 translate-middle">
+  <div class="row justify-content-center">
+    <div class="col-12 align-self-center" id="LoginBox">
+      <div class="section">
+        <h6 class="text-center"><span>Log In </span><span>Sign Up</span></h6>
           <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
           <label for="reg-log"></label>
           <div class="card-3d-wrap mx-auto">
@@ -28,10 +28,6 @@ import RegisterBoxComponent from '../components/RegisterBoxComponent.vue';
 </template>
 
 <style scoped>
-.full-height{
-  height: 100vh;
-}
-
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked){
   position: absolute;
