@@ -1,6 +1,7 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
-import { RouterLink } from 'vue-router'
+import BackpackedAttacks from '../components/BackpackedAttacks.vue';
+import EquippedAttacks from '../components/EquippedAttacks.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isSmallDevice = ref(false);
@@ -29,77 +30,11 @@ onBeforeUnmount(() => {
 <div class="col"  :class="{ 'isSmallDevice': isSmallDevice }" >
   <div class="col" v-if="isSmallDevice">
     <div class="col" style="padding: 0rem;">
-      <div class="space_between" style="margin-bottom: 15px;" >
-        <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-            <h4 > Backpacked Attacks </h4>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px;">
-            <h5 >Attack 1</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E; padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px;">
-          <h5 >Attack 2</h5>
-        </div>
-    </div>
-           <div class="space_between">
-            <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E; padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px; ">
-        <h5 >Attack 4</h5>
-      </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px; ">
-            <h5 >Attack 5</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px;">
-            <h5 >Attack 8</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px;">
-            <h5 >Attack 9</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem; margin-right: 30px;
-  margin-left: 30px;">
-            <h5 >Attack 10</h5>
-        </div>
-      </div>
-      <div class="space_between" style="margin-bottom: 60px;"> </div>
+      <BackpackedAttacks margins="30px" ></BackpackedAttacks>  
    </div>
    
    <div class="col" style="padding: 0rem;">
-        <div class="space_between">
-          <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-              <h4 > Equipped attacks </h4>
-          </div>
-        </div>
-        <div class="space_between" style="margin-right: 30px; margin-left: 30px;">
-          <div class="col rounded-column-2 text-center">
-              <h5 >Attack 3</h5>
-          </div>
-        </div>
-        <div class="space_between" style="margin-right: 30px; margin-left: 30px;">
-          <div class="col rounded-column-2 text-center">
-            <h5 >Attack 6</h5>
-          </div>
-      </div>
-             <div class="space_between" style="margin-right: 30px; margin-left: 30px;">
-              <div class="col rounded-column-2 text-center">
-          <h5 >Attack 7</h5>
-        </div>
-        </div>
+    <EquippedAttacks margins="30px" ></EquippedAttacks>  
      </div>
      <div class="col"> 
     <div class="spacer" style="height: 60px;"></div>
@@ -122,26 +57,7 @@ onBeforeUnmount(() => {
     <div class="spacer"></div>
     <div class="col rounded-column-1" >
        <div class="col" style="padding: 0rem;">
-        <div class="space_between">
-          <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-              <h4 > Equipped attacks </h4>
-          </div>
-        </div>
-        <div class="space_between">
-          <div class="col rounded-column-2 text-center">
-              <h5 >Attack 3</h5>
-          </div>
-        </div>
-        <div class="space_between">
-          <div class="col rounded-column-2 text-center">
-            <h5 >Attack 6</h5>
-          </div>
-      </div>
-             <div class="space_between">
-              <div class="col rounded-column-2 text-center">
-          <h5 >Attack 7</h5>
-        </div>
-        </div>
+        <EquippedAttacks margins="0px" ></EquippedAttacks> 
      </div>
     </div>
   </div> 
@@ -161,46 +77,7 @@ onBeforeUnmount(() => {
      <div class="spacer" style="height: 120px;" ></div>
   <div class="col rounded-column-1" >
      <div class="col" style="padding: 0rem;">
-      <div class="space_between" style="margin-bottom: 15px;" >
-        <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-            <h4 > Backpacked Attacks </h4>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem;">
-            <h5 >Attack 1</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E; padding: 0.5rem;">
-          <h5 >Attack 2</h5>
-        </div>
-    </div>
-           <div class="space_between">
-            <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E; padding: 0.5rem;">
-        <h5 >Attack 4</h5>
-      </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem;">
-            <h5 >Attack 5</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem;">
-            <h5 >Attack 8</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem;">
-            <h5 >Attack 9</h5>
-        </div>
-      </div>
-      <div class="space_between">
-        <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;  padding: 0.5rem;">
-            <h5 >Attack 10</h5>
-        </div>
-      </div>
+      <BackpackedAttacks margins="0px" ></BackpackedAttacks>  
    </div>
   </div></div> 
 </div>

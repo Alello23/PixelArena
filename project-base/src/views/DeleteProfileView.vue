@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isSmallDevice = ref(false);
@@ -82,7 +82,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="col-3 ">
                 <div class="space_between" >
-                    <RouterLink to="/" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h4>Yes</h4></RouterLink>
+                  <ButtonComponent_profile label="Yes" path="/" color="#8C9A45"></ButtonComponent_profile>
                   </div>
             </div>
             <div class="col-2 ">
@@ -90,8 +90,8 @@ onBeforeUnmount(() => {
                 </div>
             </div>
             <div class="col-3">
-                <div class="space_between" >
-                    <RouterLink to="/profile" class="btn btn-success custom-button" style="background-color: #CF5454;" ><h4>No</h4></RouterLink>
+                <div class="space_between">
+                    <ButtonComponent_profile label="No" path="/profile" color="#CF5454"></ButtonComponent_profile>
                   </div>
             </div>
             <div class="col-2 ">
@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="col-4">
             <div class="space_between" >
-                <RouterLink to="/profile" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+                <ButtonComponent_profile label="return" path="/profile" color=""></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-4 ">

@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import myProfile from '../assets/images/avatar.jpg';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';

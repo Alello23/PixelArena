@@ -1,6 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-
+import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 </script>
 
 <template>
@@ -79,8 +78,8 @@ import { RouterLink } from 'vue-router'
             </div>
         </div>
         <div class="col-6">
-            <div class="space_between" >
-                <RouterLink to="/inventory" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h4>Save Changes</h4></RouterLink>
+            <div class="space_between">
+                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">
@@ -95,7 +94,7 @@ import { RouterLink } from 'vue-router'
         </div>
         <div class="col-6">
             <div class="space_between" >
-                <RouterLink to="/inventory" class="btn btn-success custom-button" style="background-color: #CF5454;" ><h4>Cancel</h4></RouterLink>
+                <ButtonComponent_profile label="Cancel" path="/inventory" color="#CF5454"></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">
@@ -110,7 +109,7 @@ import { RouterLink } from 'vue-router'
         </div>
         <div class="col-4">
             <div class="space_between" >
-                <RouterLink to="/inventory" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+                <ButtonComponent_profile label="return" path="/inventory" color=""></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-4 ">
