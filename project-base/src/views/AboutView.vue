@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import myProfile from '../assets/images/avatar.jpg';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 
 const isSmallDevice = ref(false);
 
@@ -36,7 +37,7 @@ onBeforeUnmount(() => {
                       <div class="col text-center">
                         <h8>User + lvl</h8>
                         <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                          <div class="progress-bar" style="width: 50%; background-color: #DFE232;" ></div>
+                          <div class="progress-bar" style="width: 50%; " ></div>
                         </div>
                   </div>
                 </div>
@@ -79,7 +80,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div class="col-8 ">
-          <RouterLink to="/inventory" class="btn btn-success custom-button" style="background-color: #8C9A45;"> <h3>Inventory</h3></RouterLink>
+          <ButtonComponent_profile label="Inventory" path="/inventory" color="#8C9A45"></ButtonComponent_profile>
         </div>
         <div class="col-2 ">
             <div class="space_between" >
@@ -92,7 +93,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div class="col-8 ">
-          <RouterLink to="/viewlogs" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h3>View logs</h3></RouterLink>
+          <ButtonComponent_profile label="View logs" path="/viewlogs" color="#8C9A45"></ButtonComponent_profile>
         </div>
         <div class="col-2 ">
             <div class="space_between" >
@@ -105,7 +106,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div class="col-8 ">
-          <RouterLink to="/deleteprofile" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h3>Delete Profile</h3></RouterLink>
+          <ButtonComponent_profile label="Delete Profile" path="/deleteprofile" color="#8C9A45"></ButtonComponent_profile>
         </div>
         <div class="col-2 ">
             <div class="space_between" >
@@ -119,7 +120,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="col-4">
             <div class="space_between" >
-              <RouterLink to="/home" class="btn btn-success custom-button" ><h4>return</h4></RouterLink>
+              <ButtonComponent_profile label="return" path="/home" color=""></ButtonComponent_profile>
             </div>
         </div>
         <div class="col-4 ">

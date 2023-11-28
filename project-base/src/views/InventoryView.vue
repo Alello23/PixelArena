@@ -1,4 +1,5 @@
 <script setup>
+import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import { RouterLink } from 'vue-router'
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
@@ -104,10 +105,10 @@ onBeforeUnmount(() => {
     <div class="spacer" style="height: 60px;"></div>
     <div class="col">
       <div class="space_between">
-        <RouterLink to="/changeequippedattacks" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h4>Change equipped atacks</h4></RouterLink>
+        <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>
       <div class="space_between">
-        <RouterLink to="/profile" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+        <ButtonComponent_profile label="return" path="/profile" color=""></ButtonComponent_profile>
       </div>
 
     </div> 
@@ -148,10 +149,10 @@ onBeforeUnmount(() => {
     <div class="spacer" style="height: 560px;"></div>
     <div class="col">
       <div class="space_between">
-        <RouterLink to="/changeequippedattacks" class="btn btn-success custom-button" style="background-color: #8C9A45;" ><h4>Change equipped atacks</h4></RouterLink>
+        <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>
       <div class="space_between">
-        <RouterLink to="/profile" class="btn btn-success custom-button" style="background-color: #EAEAEA;" ><h4>return</h4></RouterLink>
+        <ButtonComponent_profile label="return" path="/profile" color=""></ButtonComponent_profile>
       </div>
 
     </div> 
