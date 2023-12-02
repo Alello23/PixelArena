@@ -12,10 +12,10 @@
                   <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
                     <h1>Create attack</h1>
                     <div class="col"> 
-                      <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-                        <div class="custom-button"  style="background-color: #DECA91;">
+                      <div class="space_between" style="margin-right: 30px; margin-left: 30px;">
+                        <div class="custom-button"  style="background-color: #DECA91; padding: 0rem;">
                             <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #fafafa; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h1 style="color: black;">Add a name to the attack</h1>
+                                <h2 style="color: black;">Add a name to the attack</h2>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right " >
                                 <li><a class="dropdown-item" href="#">Attack 1</a></li>

@@ -1,5 +1,6 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
+import ViewLogsComponent from '../components/ViewLogsComponent.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isSmallDevice = ref(false);
@@ -34,65 +35,8 @@ onBeforeUnmount(() => {
 </div>
   <div class="col ">
     <div class="col" style=" max-height: 380px; overflow-y: scroll;"> 
-      <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">
-        <div v-if="isSmallDevice">
-          <div class="spacer_sides" >
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 1</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 2</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 3</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 4</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 5</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 6</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 7</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 8</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 9</h2> </button>
-        </div> 
-        </div>
-        <div v-else>
-          <div class="spacer_sides" >
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 1</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 2</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 3</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 4</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 5</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 6</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"> <h2>Log Game 7</h2></button>
-        </div>
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 8</h2> </button>
-        </div> 
-        <div class="spacer_sides">
-          <button type="button" class="custom-button" style="background-color: #DECA91;"><h2>Log Game 9</h2> </button>
-        </div> 
-        </div>
+      <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">    
+        <ViewLogsComponent ></ViewLogsComponent>
       </div> 
       
     </div> 

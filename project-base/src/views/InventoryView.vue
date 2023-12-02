@@ -29,16 +29,16 @@ onBeforeUnmount(() => {
     </header>
 <div class="col"  :class="{ 'isSmallDevice': isSmallDevice }" >
   <div class="col" v-if="isSmallDevice">
-    <div class="col" style="padding: 0rem;">
+    <aside class="col" style="padding: 0rem;">
       <BackpackedAttacks margins="30px" ></BackpackedAttacks>  
-   </div>
+   </aside>
    
-   <div class="col" style="padding: 0rem;">
+   <aside class="col" style="padding: 0rem;">
     <EquippedAttacks margins="30px" ></EquippedAttacks>  
-     </div>
+     </aside>
      <div class="col"> 
     <div class="spacer" style="height: 60px;"></div>
-    <div class="col">
+    <section class="col">
       <div class="space_between">
         <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>
@@ -46,24 +46,21 @@ onBeforeUnmount(() => {
         <ButtonComponent_profile label="return" path="/profile" color=""></ButtonComponent_profile>
       </div>
 
-    </div> 
+    </section> 
   </div> 
-
-
-
 </div>
 <div class="row" v-else >
   <div class="col-3" style="padding: 0rem;">
     <div class="spacer"></div>
     <div class="col rounded-column-1" >
-       <div class="col" style="padding: 0rem;">
+       <aside class="col" style="padding: 0rem;">
         <EquippedAttacks margins="0px" ></EquippedAttacks> 
-     </div>
+     </aside>
     </div>
   </div> 
   <div class="col"> 
     <div class="spacer" style="height: 560px;"></div>
-    <div class="col">
+    <section class="col">
       <div class="space_between">
         <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>
@@ -71,14 +68,14 @@ onBeforeUnmount(() => {
         <ButtonComponent_profile label="return" path="/profile" color=""></ButtonComponent_profile>
       </div>
 
-    </div> 
+    </section> 
   </div> 
   <div class="col-4" style="padding: 0rem;">
      <div class="spacer" style="height: 120px;" ></div>
   <div class="col rounded-column-1" >
-     <div class="col" style="padding: 0rem;">
+     <aside class="col" style="padding: 0rem;">
       <BackpackedAttacks margins="0px" ></BackpackedAttacks>  
-   </div>
+   </aside>
   </div></div> 
 </div>
 

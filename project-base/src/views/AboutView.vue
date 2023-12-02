@@ -1,5 +1,5 @@
 <script setup>
-import myProfile from '../assets/images/avatar.jpg';
+import UserCardComponent from '../components/UserCardComponent.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 
@@ -20,31 +20,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <header>
  <div class="rounded-column-1" style=" background-color: transparent; border: none; ">
-    <header>
+    
       <div class="col" style="padding: 0rem; ">
         <div class="row" style="padding: 0rem; ">
-          <div class="col" :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem; ">
-            <div class="col rounded-column-2 text-center" style="background-color: #87CEEB; padding: 0rem; " >
-              <div class="col" >
-                <div class="row">
-                  <div class="col-4 ">
-                    <img :src="myProfile" style="min-width: 70px; min-height: 70px; border: 2px solid #1E1E1E;  border-radius: 10px;" class="img-fluid" alt="Profile Image">
-                  </div>
-                  <div class="col-8 ">
-                     <div class="row">
-                      <div class="col text-center">
-                        <h8>User + lvl</h8>
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                          <div class="progress-bar" style="width: 50%; " ></div>
-                        </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-          </div>
-      </div>
+    
+          <article class="col" :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem; ">
+            <UserCardComponent></UserCardComponent>
+      </article>
+  
       <div class="col text-center" :class="{'col-1': isSmallDevice, 'col-6': !isSmallDevice}">
         <div v-if="!isSmallDevice">
         <h1>Profile</h1>     
@@ -56,7 +41,6 @@ onBeforeUnmount(() => {
   </div>
     </div>
   </div>
-    </header>
 <div class="col " :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem;">
   
     <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
@@ -72,6 +56,8 @@ onBeforeUnmount(() => {
         </div>
       </div>  
 </div>
+</header>
+<main>
     <div class="col" >
     <div class="row">
         <div class="col-2 ">
@@ -129,6 +115,7 @@ onBeforeUnmount(() => {
         
        </div>   
     </div>
+  </main>
 
 </template>
 

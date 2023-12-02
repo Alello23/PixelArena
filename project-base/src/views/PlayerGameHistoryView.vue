@@ -1,5 +1,7 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
+import PlayerProfileComponent from '../components/PlayerProfileComponent.vue';
+import ButtonComponent_information from '../components/ButtonComponent_information.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isSmallDevice = ref(false);
@@ -44,45 +46,17 @@ onBeforeUnmount(() => {
     <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
         <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}"  style="border: 5px solid #1E1E1E;">
             <div class="space_between">
-                <button type="button" class="custom-button" style="background-color: #8C9A45;"> <h3>Name</h3></button>
-              </div>
+              <ButtonComponent_information label="Name"  color="#8C9A45"></ButtonComponent_information>
+            </div>
               <div class="space_between">
-                <button type="button" class="custom-button" style="background-color: #8C9A45;"><h3>xp</h3> </button>
+                <ButtonComponent_information label="xp"  color="#8C9A45"></ButtonComponent_information>
               </div> 
               <div class="space_between">
-                <button type="button" class="custom-button" style="background-color: #8C9A45;"><h3>% games won</h3> </button>
+                <ButtonComponent_information label="% games won"  color="#8C9A45"></ButtonComponent_information>
               </div> 
         </div>
         <div class="col-6" v-if="!isSmallDevice" style="border: 5px solid #1E1E1E;">
-            <div class="col" style=" max-height: 450px; overflow-y: scroll;"> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game1 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game2 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game3 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game4 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game5 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game6 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game7 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game8 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game9 /infogame</h3> </button>
-                </div> 
-            </div> 
+          <PlayerProfileComponent></PlayerProfileComponent>     
         </div>
 
     </div>
@@ -95,35 +69,7 @@ onBeforeUnmount(() => {
     </div>
     <div class="row">
       <div class="col-12" v-if="isSmallDevice" style="border: 5px solid #1E1E1E;">
-            <div class="col" style=" max-height: 450px; overflow-y: scroll;"> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game1 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game2 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game3 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game4 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game5 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game6 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"> <h3>Game7 /infogame</h3></button>
-                </div>
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game8 /infogame</h3> </button>
-                </div> 
-                <div class="space_between" >
-                  <button type="button" class="custom-button" style="background-color: #DECA91;"><h3>Game9 /infogame</h3> </button>
-                </div> 
-            </div> 
+        <PlayerProfileComponent></PlayerProfileComponent> 
         </div>
     </div>
 </div>
