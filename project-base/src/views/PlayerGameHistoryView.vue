@@ -27,22 +27,22 @@ onBeforeUnmount(() => {
         <h1>Player Profile</h1>
      </div>
     </header>
-<div class="col " style="padding: 0rem;">
+<section class="col " style="padding: 0rem;">
     <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem;">
         <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}" style="padding: 0rem; ">
-            <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;" >
+            <article class="col rounded-column-2 text-center" style="background-color: #6B8E9E;" >
                 <h1 >Player information</h1>
-            </div>
+            </article>
           </div> 
           <div class="col-6" v-if="!isSmallDevice" style="padding: 0rem; ">
-            <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
+            <article class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
                 <h1 >Finished games</h1>
-            </div>
+            </article>
           </div>
     </div>
   
-</div>
-  <div class="col" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
+</section>
+  <main class="col" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
     <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
         <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}"  style="border: 5px solid #1E1E1E;">
             <div class="space_between">
@@ -72,8 +72,8 @@ onBeforeUnmount(() => {
         <PlayerProfileComponent></PlayerProfileComponent> 
         </div>
     </div>
-</div>
-   <div class="col" >
+</main>
+   <section class="col" >
        <div class="row">
         <div class="col-4 ">
             <div class="space_between" >
@@ -90,6 +90,6 @@ onBeforeUnmount(() => {
         </div>
         
        </div>    
-    </div>
+    </section>
 </div>
 </template>

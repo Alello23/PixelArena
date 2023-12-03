@@ -27,21 +27,21 @@ onBeforeUnmount(() => {
      </div>
     </header>
 <div class="col " style="padding: 0rem;">
-  <div class="col-12" style="padding: 0rem; ">
+  <article class="col-12" style="padding: 0rem; ">
     <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
         <h1 >Game Logs</h1>
     </div>
-  </div> 
+  </article> 
 </div>
   <div class="col ">
-    <div class="col" style=" max-height: 380px; overflow-y: scroll;"> 
+    <main class="col" style=" max-height: 380px; overflow-y: scroll;"> 
       <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">    
         <ViewLogsComponent ></ViewLogsComponent>
       </div> 
       
-    </div> 
+    </main> 
 </div>
-   <div class="col" >
+   <article class="col" >
        <div class="row">
         <div class="col-4 ">
             <div class="space_between" >
@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
         </div>
         
        </div>    
-    </div>
+    </article>
 </div>  
 </template>
 

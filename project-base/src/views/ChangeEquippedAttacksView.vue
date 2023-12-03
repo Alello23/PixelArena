@@ -1,5 +1,7 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
+import DropDownComponent from '../components/DropDownComponent.vue';
+import ButtonComponent_save from '../components/ButtonComponent_save.vue';
 </script>
 
 <template>
@@ -10,68 +12,23 @@ import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
      </div>
     </header>
 <div class="col " style="padding: 0rem;">
-  <div class="col-12" style="padding: 0rem; ">
+  <article class="col-12" style="padding: 0rem; ">
     <div class="col rounded-column-2 text-center" style="background-color: #6B8E9E;" >
         <h1 >Equipped Attacks</h1>
     </div>
-  </div> 
-  <div class="col"> 
+  </article> 
+  <main class="col"> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <div class="custom-button"  style="background-color: #DECA91;">
-            <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #DECA91; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                <h1 style="color: black;">Attack 3</h1>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right " >
-                <li><a class="dropdown-item" href="#">Attack 1</a></li>
-                <li><a class="dropdown-item" href="#">Attack 2</a></li>
-                <li><a class="dropdown-item" href="#">Attack 3</a></li>
-                <li><a class="dropdown-item" href="#">Attack 4</a></li>
-                <li><a class="dropdown-item" href="#">Attack 5</a></li>
-                <li><a class="dropdown-item" href="#">Attack 6</a></li>
-                <li><a class="dropdown-item" href="#">Attack 7</a></li>
-                <li><a class="dropdown-item" href="#">Attack 9</a></li>
-                <li><a class="dropdown-item" href="#">Attack 10</a></li>
-            </ul>
-        </div>
+        <DropDownComponent label="Attack 3"></DropDownComponent>
       </div>
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <div class="custom-button"  style="background-color: #DECA91;">
-            <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #DECA91; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                <h1 style="color: black;">Attack 6</h1>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right " >
-                <li><a class="dropdown-item" href="#">Attack 1</a></li>
-                <li><a class="dropdown-item" href="#">Attack 2</a></li>
-                <li><a class="dropdown-item" href="#">Attack 3</a></li>
-                <li><a class="dropdown-item" href="#">Attack 4</a></li>
-                <li><a class="dropdown-item" href="#">Attack 5</a></li>
-                <li><a class="dropdown-item" href="#">Attack 6</a></li>
-                <li><a class="dropdown-item" href="#">Attack 7</a></li>
-                <li><a class="dropdown-item" href="#">Attack 9</a></li>
-                <li><a class="dropdown-item" href="#">Attack 10</a></li>
-            </ul>
-        </div>
+        <DropDownComponent label="Attack 6"></DropDownComponent>
       </div> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <div class="custom-button"  style="background-color: #DECA91;">
-            <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #DECA91; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                <h1 style="color: black;">Attack 7</h1>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right" >
-                <li><a class="dropdown-item" href="#">Attack 1</a></li>
-                <li><a class="dropdown-item" href="#">Attack 2</a></li>
-                <li><a class="dropdown-item" href="#">Attack 3</a></li>
-                <li><a class="dropdown-item" href="#">Attack 4</a></li>
-                <li><a class="dropdown-item" href="#">Attack 5</a></li>
-                <li><a class="dropdown-item" href="#">Attack 6</a></li>
-                <li><a class="dropdown-item" href="#">Attack 7</a></li>
-                <li><a class="dropdown-item" href="#">Attack 9</a></li>
-                <li><a class="dropdown-item" href="#">Attack 10</a></li>
-            </ul>
-        </div>
+        <DropDownComponent label="Attack 7"></DropDownComponent>
       </div> 
-  </div> 
-       <div class="col" >
+  </main> 
+       <section class="col" >
        <div class="row">
         <div class="col-3 ">
             <div class="space_between" >
@@ -79,7 +36,7 @@ import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
         </div>
         <div class="col-6">
             <div class="space_between">
-                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_profile>
+                <ButtonComponent_save label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_save>
               </div>
         </div>
         <div class="col-3 ">
@@ -118,7 +75,7 @@ import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
         </div>
         
        </div>    
-    </div>
+    </section>
 </div>
 </div> 
 </template>
