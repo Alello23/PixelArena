@@ -21,15 +21,16 @@
 export default {
   props: {
     label: String,
+    dropdownId: String
   },
   computed: {
     selectedAttack() {
-      return this.$store.getters.getSelectedAttack;
+      return this.$store.getters.getSelectedAttack(this.dropdownId);
     },
   },
   methods: {
     selectAttack(attack) {
-      this.$store.dispatch('selectAttack', attack);
+      this.$store.dispatch('selectAttack', { dropdown: this.dropdownId, attack });
     },
   },
   data() {

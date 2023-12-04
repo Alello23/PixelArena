@@ -3,29 +3,24 @@ import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
 
 const store = useStore();
-
-const saveAttack = () => {
-  const selectedAttack = store.getters.getSelectedAttack;
-  // You can perform any action with the selectedAttack here, e.g., save it to the server
-  console.log('Selected Attack:', selectedAttack);
-
-  // Continue with the existing functionality
+const clearSavedAttacks = () => {
+  // Dispatch the clearSavedAttacks action when the button is clicked
+  store.dispatch('clearSavedAttacks');
 };
+</script>
 
-</script> 
 <template>
-  <RouterLink :to="path" class="btn btn-success custom-button" :style="{ backgroundColor: color }" @click="saveAttack">
+  <RouterLink :to="path" class="btn btn-success custom-button" :style="{ backgroundColor: color }" @click="clearSavedAttacks">
     <h3>{{ label }}</h3>
   </RouterLink>
 </template>
-
 
 <script>
 export default {
   props: {
     label: String,
     path: String,
-    color: String
-  }
-}
+    color: String,
+  },
+};
 </script>

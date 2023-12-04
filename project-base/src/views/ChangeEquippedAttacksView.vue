@@ -2,6 +2,8 @@
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import DropDownComponent from '../components/DropDownComponent.vue';
 import ButtonComponent_save from '../components/ButtonComponent_save.vue';
+
+
 </script>
 
 <template>
@@ -19,13 +21,13 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
   </article> 
   <main class="col"> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 3"></DropDownComponent>
+        <DropDownComponent label="Attack 3" dropdownId="dropdown1"></DropDownComponent>
       </div>
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 6"></DropDownComponent>
+        <DropDownComponent label="Attack 6" dropdownId="dropdown2"></DropDownComponent>
       </div> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 7"></DropDownComponent>
+        <DropDownComponent label="Attack 7" dropdownId="dropdown3"></DropDownComponent>
       </div> 
   </main> 
        <section class="col" >
@@ -36,7 +38,7 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
         </div>
         <div class="col-6">
             <div class="space_between">
-                <ButtonComponent_save label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_save>
+                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">
@@ -51,7 +53,7 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
         </div>
         <div class="col-6">
             <div class="space_between" >
-                <ButtonComponent_profile label="Cancel" path="/inventory" color="#CF5454"></ButtonComponent_profile>
+              <ButtonComponent_save label="Cancel" path="/inventory" color="#CF5454" ></ButtonComponent_save>
               </div>
         </div>
         <div class="col-3 ">
