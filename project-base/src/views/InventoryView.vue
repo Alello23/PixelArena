@@ -2,6 +2,7 @@
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import BackpackedAttacks from '../components/BackpackedAttacks.vue';
 import EquippedAttacks from '../components/EquippedAttacks.vue';
+import BackpackedAttackInput from '../components/BackpackedAttackInput.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isSmallDevice = ref(false);
@@ -61,6 +62,9 @@ onBeforeUnmount(() => {
   <div class="col"> 
     <div class="spacer" style="height: 560px;"></div>
     <section class="col">
+      <div class="space_between">
+        <BackpackedAttackInput ></BackpackedAttackInput>
+      </div>
       <div class="space_between">
         <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>

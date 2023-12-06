@@ -1,7 +1,6 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import DropDownComponent from '../components/DropDownComponent.vue';
-import ButtonComponent_save from '../components/ButtonComponent_save.vue';
 import { useStore } from 'vuex';
 import { ref } from 'vue';
 
@@ -38,14 +37,32 @@ if (dropdown1 !== null) {
   // The payload is an object with dropdown and attack properties
   // Modify this based on your store structure
   store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
+  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown1);
+  console.log('Index and attack name:', index, dropdown1);
+  // If the attack is found, delete it from the backpackedAttacks
+  if (index !== -1) {
+    store.dispatch('deleteBackpackedAttack', index);
+  }
 }
 
 if (dropdown2 !== null) {
   store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
+  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown2);
+  console.log('Index and attack name:', index, dropdown2);
+  // If the attack is found, delete it from the backpackedAttacks
+  if (index !== -1) {
+    store.dispatch('deleteBackpackedAttack', index);
+  }
 }
 
 if (dropdown3 !== null) {
   store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
+  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown3);
+  console.log('Index and attack name:', index, dropdown3);
+  // If the attack is found, delete it from the backpackedAttacks
+  if (index !== -1) {
+    store.dispatch('deleteBackpackedAttack', index);
+  }
 }
 console.log('Save Attack :', selectedAttacks.value);
      
@@ -85,7 +102,7 @@ console.log('Save Attack :', selectedAttacks.value);
         </div>
         <div class="col-6">
             <div class="space_between">
-                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45" ></ButtonComponent_profile>
+                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45" @click="SaveAttacks"></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">
@@ -100,7 +117,7 @@ console.log('Save Attack :', selectedAttacks.value);
         </div>
         <div class="col-6">
             <div class="space_between" >
-              <ButtonComponent_save label="Cancel" path="/inventory" color="#CF5454" @click="SaveAttacks"></ButtonComponent_save>
+              <ButtonComponent_profile label="Cancel" path="/inventory" color="#CF5454" ></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">

@@ -7,49 +7,47 @@
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      <h1 style="color: black;">{{ selectedAttack || this.$store.getters.getSelectedAttack(this.dropdownId) || label  }}</h1>
+      <h1 style="color: black;">{{ selectedAttack || label }}</h1>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">
-      <li v-for="attack in attacks" :key="attack">
-        <a class="dropdown-item" @click="selectAttack(attack)">{{ attack }}</a>
+      <li v-for="attack in backpackedAttacks" :key="attack.name">
+        <a class="dropdown-item" @click="selectAttack(attack)">{{ attack.name }}</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
   props: {
     label: String,
-    dropdownId: String
+    dropdownId: String,
   },
   computed: {
     selectedAttack() {
-      
       return this.selectedAttackValue;
     },
-  },
+    backpackedAttacks() {
+      const store = useStore();
+      // Retrieve backpacked attacks from the store or modify based on your store structure
+      return store.state.backpackedAttacks;
+    },
+   },
   methods: {
     selectAttack(attack) {
-      this.selectedAttackValue = attack;
-      this.$emit('attack-selected', { dropdownId: this.dropdownId, attack });
-      
+      this.selectedAttackValue = attack.name;
+    this.$emit('attack-selected', { dropdownId: this.dropdownId, attack: attack.name });
     },
+    getSelectedAttackFromStore() {
+    // Use the store to get the initial selected attack value
+    return this.$store.getters.getSelectedAttack(this.dropdownId) || null;
+  },
   },
   data() {
     return {
-      attacks: [
-        'Attack 1',
-        'Attack 2',
-        'Attack 3',
-        'Attack 4',
-        'Attack 5',
-        'Attack 6',
-        'Attack 7',
-        'Attack 8',
-        'Attack 9',
-      ],
-      selectedAttackValue: null, // Added data property to store selected attack
+      selectedAttackValue: this.getSelectedAttackFromStore(),
     };
   },
 };
