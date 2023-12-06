@@ -2,7 +2,54 @@
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import DropDownComponent from '../components/DropDownComponent.vue';
 import ButtonComponent_save from '../components/ButtonComponent_save.vue';
+import { useStore } from 'vuex';
+import { ref } from 'vue';
 
+const store = useStore();
+
+const selectedAttacks = ref({
+  dropdown1: null,
+  dropdown2: null,
+  dropdown3: null,
+});
+
+const handleSaveAttacks = (payload) => {
+  console.log('Selected Attack Payload:', payload);
+  // Access payload.dropdownId and payload.attack here
+  const { dropdownId, attack } = payload;
+
+  // Update the selectedAttacks variable based on which dropdown emitted the payload
+  if (dropdownId === 'dropdown1') {
+    selectedAttacks.value.dropdown1 = attack;
+  } else if (dropdownId === 'dropdown2') {
+    selectedAttacks.value.dropdown2 = attack;
+  } else if (dropdownId === 'dropdown3') {
+    selectedAttacks.value.dropdown3 = attack;
+  }
+};
+const SaveAttacks = () => {
+  // Update the store with the selected attack
+ // Update the store with the selected attacks
+ const { dropdown1, dropdown2, dropdown3 } = selectedAttacks.value;
+
+// Dispatch the selectAttack action for each dropdown
+if (dropdown1 !== null) {
+  // Only dispatch if an attack is selected
+  // The payload is an object with dropdown and attack properties
+  // Modify this based on your store structure
+  store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
+}
+
+if (dropdown2 !== null) {
+  store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
+}
+
+if (dropdown3 !== null) {
+  store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
+}
+console.log('Save Attack :', selectedAttacks.value);
+     
+};
 
 </script>
 
@@ -21,13 +68,13 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
   </article> 
   <main class="col"> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 3" dropdownId="dropdown1"></DropDownComponent>
+        <DropDownComponent label="Attack 3" dropdownId="dropdown1" @attack-selected="handleSaveAttacks"></DropDownComponent>
       </div>
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 6" dropdownId="dropdown2"></DropDownComponent>
+        <DropDownComponent label="Attack 6" dropdownId="dropdown2" @attack-selected="handleSaveAttacks"></DropDownComponent>
       </div> 
       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-        <DropDownComponent label="Attack 7" dropdownId="dropdown3"></DropDownComponent>
+        <DropDownComponent label="Attack 7" dropdownId="dropdown3" @attack-selected="handleSaveAttacks"></DropDownComponent>
       </div> 
   </main> 
        <section class="col" >
@@ -38,7 +85,7 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
         </div>
         <div class="col-6">
             <div class="space_between">
-                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45"></ButtonComponent_profile>
+                <ButtonComponent_profile label="Save Changes" path="/inventory" color="#8C9A45" ></ButtonComponent_profile>
               </div>
         </div>
         <div class="col-3 ">
@@ -53,7 +100,7 @@ import ButtonComponent_save from '../components/ButtonComponent_save.vue';
         </div>
         <div class="col-6">
             <div class="space_between" >
-              <ButtonComponent_save label="Cancel" path="/inventory" color="#CF5454" ></ButtonComponent_save>
+              <ButtonComponent_save label="Cancel" path="/inventory" color="#CF5454" @click="SaveAttacks"></ButtonComponent_save>
               </div>
         </div>
         <div class="col-3 ">

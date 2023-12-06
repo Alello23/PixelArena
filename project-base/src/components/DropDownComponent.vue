@@ -7,7 +7,7 @@
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      <h1 style="color: black;">{{ selectedAttack || label }}</h1>
+      <h1 style="color: black;">{{ selectedAttack || this.$store.getters.getSelectedAttack(this.dropdownId) || label  }}</h1>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">
       <li v-for="attack in attacks" :key="attack">
@@ -25,12 +25,15 @@ export default {
   },
   computed: {
     selectedAttack() {
-      return this.$store.getters.getSelectedAttack(this.dropdownId);
+      
+      return this.selectedAttackValue;
     },
   },
   methods: {
     selectAttack(attack) {
-      this.$store.dispatch('selectAttack', { dropdown: this.dropdownId, attack });
+      this.selectedAttackValue = attack;
+      this.$emit('attack-selected', { dropdownId: this.dropdownId, attack });
+      
     },
   },
   data() {
@@ -46,6 +49,7 @@ export default {
         'Attack 8',
         'Attack 9',
       ],
+      selectedAttackValue: null, // Added data property to store selected attack
     };
   },
 };
