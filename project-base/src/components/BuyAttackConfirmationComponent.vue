@@ -13,8 +13,8 @@
                     <div style="border: 2px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); background-color: #87CEEB;"><h2>Are you sure you want to buy Attack1?</h2></div>
                     <div class="space_between"></div> 
                     <div class="confirmation-buttons d-flex justify-content-between">
-                        <button type="button" class="custom-button" style="background-color: #419FD6; border: 2px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white; margin-right: 20px; margin-left: 30;" data-bs-target="#buyAttack" data-bs-toggle="modal"><h3>NO</h3></button>
-                        <button type="button" class="custom-button" style="background-color: #419FD6; border: 2px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;margin-right: 10px;" data-bs-target="#buyAttack" data-bs-toggle="modal"><h3>YES</h3></button>
+                        <ButtonComponent_profile label="Save Changes" path="/confirmation" color="#8C9A45"><h3>NO</h3></ButtonComponent_profile>
+                        <ButtonComponent_profile label="Save Changes" path="/confirmation" color="#8C9A45"><h3>YES</h3></ButtonComponent_profile>
                     </div>    
                 </div>
                 </div>

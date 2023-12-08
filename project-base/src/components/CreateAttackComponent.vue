@@ -1,3 +1,8 @@
+<script setup>
+import DropDownShopComponent from '../components/DropDownShopComponent.vue';
+import AddData from './AddData.vue';
+</script>
+
 <template>
   <div class="modal fade" tabindex="-1" id="createAttack">
 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -12,41 +17,13 @@
                   <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
                     <h1>Create attack</h1>
                     <div class="col"> 
-                      <div class="space_between" style="margin-right: 30px; margin-left: 30px;">
-                        <div class="custom-button"  style="background-color: #DECA91; padding: 0rem;">
-                            <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #fafafa; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h2 style="color: black;">Add a name to the attack</h2>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right " >
-                                <li><a class="dropdown-item" href="#">Attack 1</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 2</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 3</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 4</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 5</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 6</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 7</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 9</a></li>
-                                <li><a class="dropdown-item" href="#">Attack 10</a></li>
-                            </ul>
-                        </div>
-                      </div>
                       <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
                         <div class="custom-button"  style="background-color: #DECA91;">
-                            <button type="button" class="btn btn-danger dropdown-toggle" style="background-color: #fafafa; border: none;" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h1 style="color: black;">Add the attack position</h1>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right " >
-                                <li><a class="dropdown-item" href="#">Attack postion 1</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 2</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 3</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 4</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 5</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 6</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 7</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 9</a></li>
-                                <li><a class="dropdown-item" href="#">Attack postion 10</a></li>
-                            </ul>
+                          <AddData placeholderText="Add name to the attack" />
                         </div>
+                      </div>
+                      <div class="space_between" style="margin-right: 200px; margin-left: 200px;">
+                          <DropDownShopComponent label="Position"></DropDownShopComponent>
                       </div> 
                   </div> 
                 </div>
