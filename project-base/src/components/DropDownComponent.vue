@@ -38,11 +38,12 @@ export default {
   methods: {
     selectAttack(attack) {
       this.selectedAttackValue = attack.name;
-    this.$emit('attack-selected', { dropdownId: this.dropdownId, attack: attack.name });
+    this.$emit('attack-selected', { dropdownId: this.dropdownId, attack: attack });
     },
     getSelectedAttackFromStore() {
-    // Use the store to get the initial selected attack value
-    return this.$store.getters.getSelectedAttack(this.dropdownId) || null;
+     // Use the store to get the initial selected attack value
+     const selectedAttack = this.$store.getters.getSelectedAttack(this.dropdownId);
+     return selectedAttack ? selectedAttack.name : null;
   },
   },
   data() {

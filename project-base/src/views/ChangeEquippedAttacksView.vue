@@ -18,54 +18,63 @@ const handleSaveAttacks = (payload) => {
   const { dropdownId, attack } = payload;
 
   // Update the selectedAttacks variable based on which dropdown emitted the payload
-  if (dropdownId === 'dropdown1') {
-    selectedAttacks.value.dropdown1 = attack;
-  } else if (dropdownId === 'dropdown2') {
-    selectedAttacks.value.dropdown2 = attack;
-  } else if (dropdownId === 'dropdown3') {
-    selectedAttacks.value.dropdown3 = attack;
-  }
+  selectedAttacks.value[dropdownId] = attack;
 };
 const SaveAttacks = () => {
-  // Update the store with the selected attack
- // Update the store with the selected attacks
- const { dropdown1, dropdown2, dropdown3 } = selectedAttacks.value;
 
-// Dispatch the selectAttack action for each dropdown
-if (dropdown1 !== null) {
-  // Only dispatch if an attack is selected
-  // The payload is an object with dropdown and attack properties
-  // Modify this based on your store structure
-  store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
-  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown1);
-  console.log('Index and attack name:', index, dropdown1);
-  // If the attack is found, delete it from the backpackedAttacks
-  if (index !== -1) {
-    store.dispatch('deleteBackpackedAttack', index);
-  }
-}
+  const TransferdAttack1 = store.getters.getSelectedAttack('dropdown1');
+  const TransferdAttack2 = store.getters.getSelectedAttack('dropdown2');
+  const TransferdAttack3 = store.getters.getSelectedAttack('dropdown3');
 
-if (dropdown2 !== null) {
-  store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
-  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown2);
-  console.log('Index and attack name:', index, dropdown2);
-  // If the attack is found, delete it from the backpackedAttacks
-  if (index !== -1) {
-    store.dispatch('deleteBackpackedAttack', index);
-  }
-}
+  // Update the store with the selected attacks
+  const { dropdown1, dropdown2, dropdown3 } = selectedAttacks.value;
 
-if (dropdown3 !== null) {
-  store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
-  const index = store.state.backpackedAttacks.findIndex(a => a.name === dropdown3);
-  console.log('Index and attack name:', index, dropdown3);
-  // If the attack is found, delete it from the backpackedAttacks
-  if (index !== -1) {
-    store.dispatch('deleteBackpackedAttack', index);
+  if (TransferdAttack1 !== null){
+    store.dispatch('addBackpackedAttack', TransferdAttack1);
   }
-}
-console.log('Save Attack :', selectedAttacks.value);
-     
+  if (TransferdAttack2 !== null){
+    store.dispatch('addBackpackedAttack', TransferdAttack2);
+  }
+  if (TransferdAttack3 !== null){
+    store.dispatch('addBackpackedAttack', TransferdAttack3);
+  }
+
+  
+
+  // Dispatch the selectAttack action for each dropdown
+  if (dropdown1 !== null) {
+    // Only dispatch if an attack is selected
+    // The payload is an object with dropdown and attack properties
+    // Modify this based on your store structure
+    store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
+    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown1.name);
+    console.log('Index and attack name:', index, dropdown1.name);
+    // If the attack is found, delete it from the backpackedAttacks
+    if (index !== -1) {
+      store.dispatch('deleteBackpackedAttack', index);
+    }
+  }
+
+  if (dropdown2 !== null) {
+    store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
+    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown2.name);
+    console.log('Index and attack name:', index, dropdown2.name);
+    // If the attack is found, delete it from the backpackedAttacks
+    if (index !== -1) {
+      store.dispatch('deleteBackpackedAttack', index);
+    }
+  }
+
+  if (dropdown3 !== null) {
+    store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
+    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown3.name);
+    console.log('Index and attack name:', index, dropdown3.name);
+    // If the attack is found, delete it from the backpackedAttacks
+    if (index !== -1) {
+      store.dispatch('deleteBackpackedAttack', index);
+    }
+  }
+  console.log('Save Attack:', selectedAttacks.value);
 };
 
 </script>
