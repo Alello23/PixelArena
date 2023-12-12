@@ -26,7 +26,7 @@ import InputComponent from '../components/InputComponent.vue';
             </div>
         </div>
         <div class="row justify-content-center text-center">    
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="col-12">
                 <router-link to="/home">
                     <ButtonComponent class="LoginButton" label="Register" color="white" background="#419FD6"></ButtonComponent>
                 </router-link>
@@ -46,10 +46,6 @@ h4 {
     font-family: 'PressStart2P', sans-serif;
     font-weight: 600;
     margin-top: 2rem;
-}
-.LoginButton{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 </style>

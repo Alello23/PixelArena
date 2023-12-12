@@ -10,10 +10,6 @@ import confirm from './BuyAttackConfirmationComponent.vue'
 
 <template>
     <div class="nav flex-column nav-tabs">
-            <router-link to="/home">
-                <ButtonComponentColor label="Play" class="btn" id="playbtn"></ButtonComponentColor>
-            </router-link>
-        
             <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop"></ButtonComponentColor>
             <shop></shop>
             <buy></buy>
@@ -24,6 +20,7 @@ import confirm from './BuyAttackConfirmationComponent.vue'
             <router-link to="/inventory">
                 <ButtonComponentColor label="Inventory" class="btn"></ButtonComponentColor>
             </router-link>
+            
     </div>
 </template>
 

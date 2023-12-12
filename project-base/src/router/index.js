@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/ProfileView.vue')
     },
     {
       path: '/inventory',
@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import('../views/InventoryView.vue')
     },
     {
-      path: '/deleteprofile',
+      path: '/profile/deleteprofile',
       name: 'deleteprofile',
       component: () => import('../views/DeleteProfileView.vue')
     }
@@ -48,6 +48,11 @@ const router = createRouter({
       path: '/game',
       name: 'game',
       component: () => import('../views/GameView.vue')
+    },
+    {
+      path: '/wait',
+      name: 'wait',
+      component: () => import('../views/test.vue')
     }
   ]
 })

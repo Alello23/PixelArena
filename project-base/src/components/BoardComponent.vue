@@ -3,8 +3,8 @@ import part from './PartBoardComponent.vue'
 </script>
 
 <template>
-    <div class="container ">
-        <div class="row justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
             <div class="col">
                 <part></part>
             </div>
@@ -12,7 +12,7 @@ import part from './PartBoardComponent.vue'
                 <part></part>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+        <div class="row justify-content-center align-items-center">
             <div class="col">
                 <part></part>
             </div>
@@ -30,7 +30,7 @@ import part from './PartBoardComponent.vue'
         background-repeat: no-repeat;
         background-position: top;
         height: 65vh;
-    }
+    }   
     .row{
         width: 480px;
     }

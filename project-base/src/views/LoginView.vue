@@ -76,7 +76,7 @@ h6 {
 }
 .card-3d-wrap {
   position: relative;
-  width: 440px;
+  width: 400px;
   max-width: 100%;
   height: 30rem;
   -webkit-transform-style: preserve-3d;

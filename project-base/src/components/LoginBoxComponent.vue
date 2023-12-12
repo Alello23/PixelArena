@@ -43,7 +43,7 @@ h4 {
     margin-top: 2rem;
 }
 .LoginButton{
-    margin-top: 4rem;
+    margin-top: 3rem;
     margin-bottom: 2rem;
 }
 
