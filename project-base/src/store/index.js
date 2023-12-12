@@ -9,6 +9,15 @@ export const setupStore = (app) => {
         dropdown3: null,
       },
       backpackedAttacks: [], // Array to store backpacked attacks
+      player: {
+        player_ID: 'Alello23',
+        password: '1234',
+        img: "src/assets/images/avatar.jpg",
+        xp: 1050,
+        level: 3,
+        coins: 10,
+        token: '',
+      },
     },
     mutations: {
       setSelectedAttack(state, { dropdown, attack }) {
@@ -42,6 +51,7 @@ export const setupStore = (app) => {
     getters: {
       getSelectedAttack: (state) => (dropdown) => state.equippedAttacks[dropdown],
       getBackpackedAttacks: (state) => state.backpackedAttacks,
+      getplayer: (state) => state.player,
     },
   });
 

@@ -17,6 +17,30 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize);
 });
 </script>
+<script>
+export default {
+  computed: {
+    // Change profile to a computed property
+    profile() {
+      return this.profileValue;
+    },
+  },
+  methods: {
+    // Change getplayerFromStore to use getters
+    getplayerFromStore() {
+      // Use the store to get the player value
+      const profile = this.$store.getters.getplayer;
+      return profile ? profile : null;
+    },
+  },
+  data() {
+    return {
+      // Set profileValue to the player object
+      profileValue: this.getplayerFromStore(),
+    };
+  },
+};
+</script>
 
 <template>
 <div class="rounded-column-1" style=" background-color: transparent; border: none; ">
@@ -35,36 +59,36 @@ onBeforeUnmount(() => {
     <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">
         <div v-if="isSmallDevice">
           <div class="space_between" style="margin-right:5px; margin-left: 5px;">
-            <button type="button" class="custom-button" style="background-color: #DECA91;"> <h4>User</h4></button>
+            <button type="button" class="custom-button" style="background-color: #DECA91;"> <h4>{{ profileValue.player_ID }}</h4></button>
       </div>
         </div>
         <div v-else>
           <div class="space_between" style="margin-right:260px; margin-left: 260px;">
-            <button type="button" class="custom-button" style="background-color: #DECA91;"> <h4>User</h4></button>
+            <button type="button" class="custom-button" style="background-color: #DECA91;"> <h4>{{ profileValue.player_ID }}</h4></button>
       </div>
         </div>
       </div> 
       <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">
         <div v-if="isSmallDevice">
           <div class="space_between" style="margin-right:5px; margin-left: 5px;">
-        <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>level X YYYxp</h4> </button>
+        <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>level {{ profileValue.level }} {{ profileValue.xp }}xp</h4> </button>
       </div>
         </div>
         <div v-else>
           <div class="space_between" style="margin-right:260px; margin-left: 260px;">
-        <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>level X YYYxp</h4> </button>
+        <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>level {{ profileValue.level }} {{ profileValue.xp }}xp</h4> </button>
       </div>
         </div>
       </div> 
       <div class="space_between" :class="{ 'isSmallDevice': isSmallDevice }">
         <div v-if="isSmallDevice">
           <div class="space_between" style="margin-right:5px; margin-left: 5px;">
-            <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>Coins</h4> </button>
+            <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>{{ profileValue.coins }}</h4> </button>
       </div>
         </div>
         <div v-else>
           <div class="space_between" style="margin-right:260px; margin-left: 260px;">
-            <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>Coins</h4> </button>
+            <button type="button" class="custom-button" style="background-color: #DECA91;"><h4>{{ profileValue.coins }} Coins</h4> </button>
       </div>
         </div>
       </div> 

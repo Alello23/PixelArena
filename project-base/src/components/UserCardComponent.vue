@@ -1,18 +1,46 @@
 <template>
     <div class="card">
-        <div class="row">
-            <div class="col-3">
-                <img src="src\assets\images\avatar.jpg" class="card-img" alt="Imagen de perfil">
-            </div>
-            <div class="col-9">
-                <h5 class="card-title">Alello23</h5>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-3">
+          <!-- Use v-bind to bind the src attribute to profile.img -->
+          <img :src="profile.img" class="card-img" alt="Imagen de perfil">
         </div>
+        <div class="col-9">
+          <h5 class="card-title">{{ profileValue.player_ID }}</h5>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" :style="{ width: (profileValue.xp / 1500) * 100 + '%' }"></div>
+          </div>
+        </div>
+      </div>
     </div>
-</template>
+  </template>
+
+<script>
+export default {
+  computed: {
+    // Change profile to a computed property
+    profile() {
+      return this.profileValue;
+    },
+  },
+  methods: {
+    // Change getplayerFromStore to use getters
+    getplayerFromStore() {
+      // Use the store to get the player value
+      const profile = this.$store.getters.getplayer;
+      return profile ? profile : null;
+    },
+  },
+  data() {
+    return {
+      // Set profileValue to the player object
+      profileValue: this.getplayerFromStore(),
+    };
+  },
+};
+</script>
+
+
 
 <style scoped>
 .progress-bar{

@@ -18,6 +18,30 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize);
 });
 </script>
+<script>
+export default {
+  computed: {
+    // Change profile to a computed property
+    profile() {
+      return this.profileValue;
+    },
+  },
+  methods: {
+    // Change getplayerFromStore to use getters
+    getplayerFromStore() {
+      // Use the store to get the player value
+      const profile = this.$store.getters.getplayer;
+      return profile ? profile : null;
+    },
+  },
+  data() {
+    return {
+      // Set profileValue to the player object
+      profileValue: this.getplayerFromStore(),
+    };
+  },
+};
+</script>
 
 <template>
   <header>
@@ -44,10 +68,10 @@ onBeforeUnmount(() => {
 <div class="col " :class="{'col-10': isSmallDevice, 'col-3': !isSmallDevice}" style="padding: 0rem;">
   
     <div class="col rounded-column-2 text-center" style="background-color: #C0D6DF;" >
-        <h8 >level X YYYxp</h8>
+        <h8 >level {{ profileValue.level }} {{ profileValue.xp }}xp</h8>
     </div>
     <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-      <h8 >Coins</h8>
+      <h8 >{{ profileValue.coins }} Coins</h8>
   </div>
   </div>
   <div class="col-12 text-center" :class="{ 'isSmallDevice': isSmallDevice }">
