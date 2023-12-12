@@ -10,8 +10,8 @@ import confirm from './BuyAttackConfirmationComponent.vue'
 
 <template>
     <div class="nav flex-column nav-tabs">
-            <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop"></ButtonComponentColor>
-            <shop></shop>
+            <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop_2"></ButtonComponentColor>
+            <shop id_p="shop_2"></shop>
             <buy></buy>
             <sell></sell>
             <create></create>

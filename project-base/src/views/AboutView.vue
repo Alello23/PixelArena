@@ -115,7 +115,7 @@ export default {
             </div>
         </div>
         <div class="col-8 ">
-          <ButtonComponent_profile label="Delete Profile" path="/deleteprofile" color="#8C9A45"></ButtonComponent_profile>
+          <ButtonComponent_profile label="Delete Profile" path="/profile/deleteprofile" color="#8C9A45"></ButtonComponent_profile>
         </div>
         <div class="col-2 ">
             <div class="space_between" >

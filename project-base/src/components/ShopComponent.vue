@@ -1,5 +1,5 @@
 <template>
-    <section class="modal fade" tabindex="-1" id="shop">
+    <section class="modal fade" tabindex="-1" :id="id_p">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
         <div class="modal-header">
@@ -27,6 +27,15 @@
     </div>
 </section>
 </template>
+
+<script>
+export default {
+  props: {
+    id_p: String
+  }
+}
+</script>
+
 
 
 

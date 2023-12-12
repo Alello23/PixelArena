@@ -1,21 +1,10 @@
-<script>
+<script setup>
 import ButtonComponentColor from '../components/ButtonComponentColor.vue';
 import shop from '../components/ShopComponent.vue'
 import buy from './BuyAttackComponent.vue'
 import sell from './SellAttackComponent.vue'
 import create from './CreateAttackComponent.vue'
 import confirm from './BuyAttackConfirmationComponent.vue'
-
-export default {
-    components: {
-      ButtonComponentColor,
-      shop,
-      buy,
-      sell,
-      create,
-      confirm
-    },
-  };
 
 </script>
 
@@ -34,8 +23,8 @@ export default {
             </div>
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop"></ButtonComponentColor>
-                    <shop></shop>
+                    <ButtonComponentColor label="Shop" class="btn" data-bs-toggle="modal" data-bs-target="#shop_1"></ButtonComponentColor>
+                    <shop id_p="shop_1"></shop>
                     <buy></buy>
                     <sell></sell>
                     <create></create>
