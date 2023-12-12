@@ -39,7 +39,7 @@ export default {
   methods: {
     selectAttack(attack) {
       this.selectedAttackValue = attack;
-    this.$emit('attack-selected', { dropdownId: this.dropdownId, attack});
+    this.$emit('attack-selected', { dropdownId: this.dropdownId, attack}); //TODO: aixo es per enviar al component que conte aixo REFERENCIA: Change equippedattacks
     },
     getSelectedAttackFromStore() {
     // Use the store to get the initial selected attack value

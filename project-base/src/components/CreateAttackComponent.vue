@@ -17,12 +17,12 @@ import AddData from './AddData.vue';
                   <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
                     <h1>Create attack</h1>
                     <div class="col"> 
-                      <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
+                      <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
                         <div class="custom-button"  style="background-color: #DECA91;">
                           <AddData placeholderText="Add name to the attack" />
                         </div>
                       </div>
-                      <div class="space_between" style="margin-right: 200px; margin-left: 200px;">
+                      <div class="space_between" style="margin-right: 200px; margin-left: 200px; ">
                           <DropDownShopComponent label="Position"></DropDownShopComponent>
                       </div> 
                   </div> 
