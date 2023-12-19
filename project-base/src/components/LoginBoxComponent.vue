@@ -1,6 +1,23 @@
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from '../components/ButtonComponent.vue'
 import InputComponent from '../components/InputComponent.vue';
+
+// Define ref variables to store input values for each instance
+const UsernameVariable = ref('');
+const PasswordVariable = ref('');
+
+// Function to handle changes in the input value for each instance
+const handleInput1 = (value) => {
+    UsernameVariable.value = value;
+    console.log(UsernameVariable.value);
+};
+
+const handleInput2 = (value) => {
+  PasswordVariable.value = value;
+  console.log(PasswordVariable.value);
+};
+
 </script>
 
 <template>
@@ -11,13 +28,15 @@ import InputComponent from '../components/InputComponent.vue';
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-10">   
-                <InputComponent label="Username"></InputComponent>
+            <div class="col-10"> 
+                <InputComponent label="Username" v-model="UsernameVariable"
+                                :maxCharacters="21" @update:parentValue="handleInput1"></InputComponent>  
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
-                <InputComponent label="Password"></InputComponent>
+                <InputComponent label="Password" v-model="PasswordVariable"
+                                :maxCharacters="21" @update:parentValue="handleInput2"></InputComponent>
             </div>
         </div>
         <div class="row justify-content-center text-center">    

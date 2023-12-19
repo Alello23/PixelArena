@@ -4,6 +4,26 @@ import ButtonComponentColor from '../components/ButtonComponentColor.vue';
 import MenuBar from '../components/MenuComponent.vue'
 import MenuBarPhone from '../components/MenuPhoneComponent.vue'
 import LeaderBoard from '../components/LeaderBoardComponent.vue'
+
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const playerId = 'Test100'; // Replace with actual player ID
+
+const fetchAndStoreUserData = async () => {
+  try {
+    const response = await fetch(`https://balandrau.salle.url.edu/i3/players/${playerId}`);
+    const userData = await response.json();
+    store.dispatch('setUserData', userData);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }
+};
+
+onMounted(() => {
+  fetchAndStoreUserData();
+});
 </script>
 
 <template>

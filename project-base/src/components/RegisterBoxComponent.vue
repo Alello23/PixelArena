@@ -1,6 +1,88 @@
 <script setup>
+import { ref } from 'vue';
 import ButtonComponent from '../components/ButtonComponent.vue'
 import InputComponent from '../components/InputComponent.vue';
+
+// Define ref variables to store input values for each instance
+const UsernameVariable = ref('');
+const PasswordVariable = ref('');
+const Password2Variable = ref('');
+const ImageVariable = ref('');
+
+// Function to handle changes in the input value for each instance
+const handleInput1 = (value) => {
+    UsernameVariable.value = value;
+    console.log(UsernameVariable.value);
+};
+
+const handleInput2 = (value) => {
+  PasswordVariable.value = value;
+  console.log(PasswordVariable.value);
+};
+
+const handleInput3 = (value) => {
+ Password2Variable.value = value;
+ console.log(Password2Variable.value);
+};
+const handleInput4 = (value) => {
+    ImageVariable.value = value;
+    console.log(ImageVariable.value);
+};
+const register = async () => {
+    console.log('UsernameVariable: ',  UsernameVariable.value );
+    console.log('PasswordVariable: ',  PasswordVariable.value );
+    console.log('Password2Variable: ',  Password2Variable.value );
+    console.log('ImageVariable: ',  ImageVariable.value );
+
+  
+    if (
+        UsernameVariable.value !== '' &&
+        PasswordVariable.value !== '' &&
+        Password2Variable.value !== '' &&
+        ImageVariable.value !== '' &&
+        PasswordVariable.value === Password2Variable.value
+    ) {
+        await sendRegisterRequest();
+    } else {
+        // Handle invalid registration data or provide feedback to the user
+        console.error('Invalid registration data');
+    }
+};
+
+const sendRegisterRequest = async () => {
+    const apiUrl = 'https://balandrau.salle.url.edu/i3/players/';
+
+    const requestData = {
+        player_ID: UsernameVariable.value,
+        password: PasswordVariable.value,
+        img: ImageVariable.value,
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData),
+        });
+
+        if (response.ok) {
+            console.log('Registration successful');
+            // Perform any additional actions after successful registration
+            return true; // Indicates successful registration
+        } else {
+            console.error('Failed to register');
+            // Handle the error if needed
+            return false; // Indicates unsuccessful registration
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+        // Handle the error if needed
+        return false; // Indicates unsuccessful registration
+    }
+};
+
 </script>
 
 <template>
@@ -11,26 +93,34 @@ import InputComponent from '../components/InputComponent.vue';
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-10">   
-                <InputComponent label="Username"></InputComponent>
+            <div class="col-10">
+                <InputComponent label="Username" v-model="UsernameVariable"
+                                :maxCharacters="21" @update:parentValue="handleInput1"></InputComponent>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
-                <InputComponent label="Password"></InputComponent>
+                <InputComponent label="Password" v-model="PasswordVariable"
+                                :maxCharacters="21" @update:parentValue="handleInput2"></InputComponent>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-10">
-                <InputComponent label="Confirm password"></InputComponent>
+                <InputComponent label="Confirm password" v-model="Password2Variable"
+                                :maxCharacters="21" @update:parentValue="handleInput3"></InputComponent>
+            </div>
+            <div class="col-10">
+                <InputComponent label="Image Link" v-model="ImageVariable"
+                                :maxCharacters="150" @update:parentValue="handleInput4"></InputComponent>
             </div>
         </div>
-        <div class="row justify-content-center text-center">    
+        <div class="row justify-content-center text-center">
             <div class="col-12">
                 <router-link to="/home">
-                    <ButtonComponent class="LoginButton" label="Register" color="white" background="#419FD6"></ButtonComponent>
-                </router-link>
-            </div>  
+                    <ButtonComponent class="LoginButton" label="Register" color="white" background="#419FD6"
+                                  @click="register"></ButtonComponent>
+                </router-link> 
+            </div>
         </div>
     </div>
 </template>
