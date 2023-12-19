@@ -28,6 +28,7 @@ export default {
     getplayerFromStore() {
       // Use the store to get the player value
       const profile = this.$store.getters.getplayer;
+      console.log('ImageVariable saved: ',  profile.img );
       return profile ? profile : null;
     },
   },

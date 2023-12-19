@@ -29,6 +29,9 @@ export const setupStore = (app) => {
       deleteBackpackedAttack(state, index) {
           state.backpackedAttacks.splice(index, 1);
       },
+      setUserData(state, userData) {
+        state.player = userData;
+      },
       
     },
     actions: {
@@ -46,7 +49,10 @@ export const setupStore = (app) => {
       deleteBackpackedAttack({ commit }, index) {
         commit('deleteBackpackedAttack', index);
         // Optionally, you can also persist the updated backpacked attacks to a backend or localStorage.
-      }
+      },
+      setUserData({ commit }, userData) {
+        commit('setUserData', userData);
+      },
     },
     getters: {
       getSelectedAttack: (state) => (dropdown) => state.equippedAttacks[dropdown],

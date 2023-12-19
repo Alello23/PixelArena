@@ -2,12 +2,16 @@
 import { ref } from 'vue';
 import ButtonComponent from '../components/ButtonComponent.vue'
 import InputComponent from '../components/InputComponent.vue';
+import { useStore } from 'vuex';  // Correct import statement for useStore
+import { useRouter } from 'vue-router';
 
 // Define ref variables to store input values for each instance
 const UsernameVariable = ref('');
 const PasswordVariable = ref('');
 const Password2Variable = ref('');
 const ImageVariable = ref('');
+const store = useStore();
+const router = useRouter();
 
 // Function to handle changes in the input value for each instance
 const handleInput1 = (value) => {
@@ -70,6 +74,8 @@ const sendRegisterRequest = async () => {
         if (response.ok) {
             console.log('Registration successful');
             // Perform any additional actions after successful registration
+            // Call handleLogin after successful registration
+            await handleLogin();
             return true; // Indicates successful registration
         } else {
             console.error('Failed to register');
@@ -81,6 +87,37 @@ const sendRegisterRequest = async () => {
         // Handle the error if needed
         return false; // Indicates unsuccessful registration
     }
+};
+
+const handleLogin = async () => {
+  try {
+    const apiUrl = 'https://balandrau.salle.url.edu/i3/players/join';
+    const requestData = {
+      player_ID: UsernameVariable.value,
+      password: PasswordVariable.value,
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (response.ok) {
+      const userData = await response.json();
+      store.dispatch('setUserData', userData); // Dispatch the data to the store
+      // Optionally, you can redirect to the home page or perform other actions.
+      router.push('/home'); // Navigate to the home page
+    } else {
+      console.error('Failed to login');
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    // Handle the error if needed
+  }
 };
 
 </script>
@@ -116,10 +153,8 @@ const sendRegisterRequest = async () => {
         </div>
         <div class="row justify-content-center text-center">
             <div class="col-12">
-                <router-link to="/home">
                     <ButtonComponent class="LoginButton" label="Register" color="white" background="#419FD6"
                                   @click="register"></ButtonComponent>
-                </router-link> 
             </div>
         </div>
     </div>
