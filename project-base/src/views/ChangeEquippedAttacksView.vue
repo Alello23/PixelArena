@@ -20,10 +20,10 @@ const handleSaveAttacks = (payload) => {
   // Update the selectedAttacks variable based on which dropdown emitted the payload
   selectedAttacks.value[dropdownId] = attack;
 };
-const SaveAttacks = () => {
+const SaveAttacks = async () =>{
 
   const TransferdAttack1 = store.getters.getSelectedAttack('dropdown1');
-  const TransferdAttack2 = store.getters.getSelectedAttack('dropdown2');
+  const TransferdAttack2 = store.getters.getSelectedAttack('dropdown2'); 
   const TransferdAttack3 = store.getters.getSelectedAttack('dropdown3');
 
   // Update the store with the selected attacks
@@ -39,7 +39,6 @@ const SaveAttacks = () => {
     store.dispatch('addBackpackedAttack', TransferdAttack3);
   }
 
-  
 
   // Dispatch the selectAttack action for each dropdown
   if (dropdown1 !== null) {
@@ -53,9 +52,11 @@ const SaveAttacks = () => {
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
     }
+    await sendAttacksToAPI(dropdown1, TransferdAttack1);
   }
 
   if (dropdown2 !== null) {
+    
     store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
     const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown2.name);
     console.log('Index and attack name:', index, dropdown2.name);
@@ -63,9 +64,11 @@ const SaveAttacks = () => {
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
     }
+    await sendAttacksToAPI(dropdown2, TransferdAttack2);
   }
 
   if (dropdown3 !== null) {
+    
     store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
     const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown3.name);
     console.log('Index and attack name:', index, dropdown3.name);
@@ -73,8 +76,43 @@ const SaveAttacks = () => {
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
     }
+    await sendAttacksToAPI(dropdown3, TransferdAttack3);
   }
   console.log('Save Attack:', selectedAttacks.value);
+};
+
+const sendAttacksToAPI = async (dropdown, TransferdAttack) => {
+
+  const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks/';
+
+  if (TransferdAttack !== null && dropdown !== null) {
+    await sendAttack(apiUrl, dropdown.name, TransferdAttack.name);
+  }
+};
+
+const sendAttack = async (apiUrl, equipId, unequipId) => {
+  const url = `${apiUrl}${equipId}/${unequipId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers if needed
+      },
+      // Add any additional data in the body if needed
+      // body: JSON.stringify({ /* your data */ }),
+    });
+
+    if (response.ok) {
+      console.log(`Attack sent successfully: ${equipId} ${unequipId}`);
+    } else {
+      console.error(`Failed to send attack: ${equipId} ${unequipId}`);
+    }
+  } catch (error) {
+    console.error('Error during fetch:', error);
+    // Handle the error if needed
+  }
 };
 
 </script>
