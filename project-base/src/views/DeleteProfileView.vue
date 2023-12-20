@@ -1,8 +1,9 @@
 <script setup>
-import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount} from 'vue';
+import { useRouter } from 'vue-router';
 
 const isSmallDevice = ref(false);
+const router = useRouter();
 
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
@@ -16,29 +17,37 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize);
 });
-</script>
-<script>
-export default {
-  computed: {
-    // Change profile to a computed property
-    profile() {
-      return this.profileValue;
-    },
-  },
-  methods: {
-    // Change getplayerFromStore to use getters
-    getplayerFromStore() {
-      // Use the store to get the player value
-      const profile = this.$store.getters.getplayer;
-      return profile ? profile : null;
-    },
-  },
-  data() {
-    return {
-      // Set profileValue to the player object
-      profileValue: this.getplayerFromStore(),
-    };
-  },
+
+const deleteProfile = async () => {
+  try {
+    const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
+    const profile = profile.value; // Access the computed property
+
+    if (!profile || !profile.token) {
+      console.error('Profile or token is undefined');
+      return;
+    }
+
+    const response = await fetch(apiUrl, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${profile.token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      console.log('Profile deleted successfully');
+      // Perform any additional actions after successful profile deletion
+      router.push('/'); // Redirect to the home page or another page
+    } else {
+      console.error('Failed to delete profile');
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during profile deletion:', error);
+    // Handle the error if needed
+  }
 };
 </script>
 
@@ -106,7 +115,7 @@ export default {
             </div>
             <div class="col-3 ">
                 <div class="space_between" >
-                  <ButtonComponent_profile label="Yes" path="/" color="#8C9A45"></ButtonComponent_profile>
+                  <ButtonComponent_information label="Yes" color="#8C9A45" @click="deleteProfile"></ButtonComponent_information>
                   </div>
             </div>
             <div class="col-2 ">
