@@ -1,45 +1,58 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount} from 'vue';
-import { useRouter } from 'vue-router';
-
+import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
+import ButtonComponent_information from '../components/ButtonComponent_information.vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 const isSmallDevice = ref(false);
-const router = useRouter();
 
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
 };
-
 onMounted(() => {
   checkScreenSize();
   window.addEventListener('resize', checkScreenSize);
 });
-
 onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize);
 });
-
+</script>
+<script>
+export default {
+  computed: {
+    // Change profile to a computed property
+    profile() {
+      return this.profileValue;
+    },
+  },
+  methods: {
+    // Change getplayerFromStore to use getters
+    getplayerFromStore() {
+      // Use the store to get the player value
+      const profile = this.$store.getters.getplayer;
+      return profile ? profile : null;
+    },
+  },
+  data() {
+    return {
+      // Set profileValue to the player object
+      profileValue: this.getplayerFromStore(),
+    };
+  },
+};
 const deleteProfile = async () => {
   try {
     const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
-    const profile = profile.value; // Access the computed property
-
-    if (!profile || !profile.token) {
-      console.error('Profile or token is undefined');
-      return;
-    }
-
+    const token = this.$store.getters.getplayer.token; 
     const response = await fetch(apiUrl, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${profile.token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
-
     if (response.ok) {
       console.log('Profile deleted successfully');
       // Perform any additional actions after successful profile deletion
-      router.push('/'); // Redirect to the home page or another page
+      this.$router.push('/'); // Redirect to the home page or another page
     } else {
       console.error('Failed to delete profile');
       // Handle the error if needed
@@ -50,6 +63,7 @@ const deleteProfile = async () => {
   }
 };
 </script>
+
 
 <template>
 <div class="rounded-column-1" style=" background-color: transparent; border: none; ">
@@ -153,6 +167,3 @@ const deleteProfile = async () => {
 </div>
 </template>
 
-<style scoped>
-
-</style>
