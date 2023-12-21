@@ -1,6 +1,6 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
-import ButtonComponent_information from '../components/ButtonComponent_information.vue';
+import ButtonComponent_Delete from '../components/ButtonComponent_Delete.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 const isSmallDevice = ref(false);
 
@@ -37,30 +37,6 @@ export default {
       profileValue: this.getplayerFromStore(),
     };
   },
-};
-const deleteProfile = async () => {
-  try {
-    const apiUrl = 'https://balandrau.salle.url.edu/i3/players';
-    const token = this.$store.getters.getplayer.token; 
-    const response = await fetch(apiUrl, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.ok) {
-      console.log('Profile deleted successfully');
-      // Perform any additional actions after successful profile deletion
-      this.$router.push('/'); // Redirect to the home page or another page
-    } else {
-      console.error('Failed to delete profile');
-      // Handle the error if needed
-    }
-  } catch (error) {
-    console.error('Error during profile deletion:', error);
-    // Handle the error if needed
-  }
 };
 </script>
 
@@ -129,7 +105,7 @@ const deleteProfile = async () => {
             </div>
             <div class="col-3 ">
                 <div class="space_between" >
-                  <ButtonComponent_information label="Yes" color="#8C9A45" @click="deleteProfile"></ButtonComponent_information>
+                  <ButtonComponent_Delete label="Yes" color="#8C9A45"></ButtonComponent_Delete>
                   </div>
             </div>
             <div class="col-2 ">
