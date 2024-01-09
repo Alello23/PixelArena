@@ -2,20 +2,63 @@
 import { ref } from 'vue';
 import DropDownShopComponent from '../components/DropDownShopComponent.vue';
 import InputComponent from '../components/InputComponent.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const AttacknameVariable = ref('');
 const AttackPositionVariable = ref('');
+
 const handleInput1 = (value) => {
     AttacknameVariable.value = value;
     console.log('Saved nameVariable: ', AttacknameVariable.value);
 };
-const handleAttackPosition = (payload) => {
-  // Access payload.dropdownId and payload.attack here
-  const {  AttackPosition } = payload;
 
-  // Update the selectedAttacks variable based on which dropdown emitted the payload
-  AttackPositionVariable.value = AttackPosition;
-  console.log('Saved AttackPositionVariable: ', payload);
+const handleAttackPosition = (payload) => {
+    const { AttackPosition } = payload;
+    AttackPositionVariable.value = AttackPosition;
+    console.log('Saved AttackPositionVariable: ', payload);
+};
+const createAttack = async () => {
+  try {
+    const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
+    const token = store.getters.getplayer.token;
+    console.log('The value of the token is: ', token);
+
+    const requestData = {
+      attack_ID: AttacknameVariable.value,
+      positions: AttackPositionVariable.value,
+    };
+
+    console.log('Passed attack_ID: ', AttacknameVariable.value);
+    console.log('Passed positions: ', AttackPositionVariable.value);
+
+    const headers = {
+      'Bearer': token,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(requestData),
+    });
+
+    if (response.ok) {
+      console.log('Attack created successfully');
+      // Perform any additional actions after successful profile deletion
+      // Use the `router` provided by the context to navigate
+      // You might need to import the router if it's not available in the setup context
+      // import { router } from 'your-router-file-path';
+      // router.push('/');
+    } else {
+      console.error('Failed to create Attack ');
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during attack creation:', error);
+    // Handle the error if needed
+  }
 };
 
 </script>
@@ -68,7 +111,7 @@ const handleAttackPosition = (payload) => {
                                         </div>
                                         <div class="col-3">
                                             <div class="space_between" >
-                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-toggle="modal" @click="createAttack"> <h4>Create</h4></button>
+                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal" @click="createAttack"> <h4>Create</h4></button>
                                                 </div>
                                         </div>
                                         <div class="col-2 ">
@@ -89,40 +132,5 @@ export default {
     props: {
       id: String
     },
-  methods: {
-    async createAttack() {
-      try {
-        const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
-        const token = this.$store.getters.getplayer.token;
-        console.log('RegisThe value of the token is: ' , token);
-        const requestData = {
-            attacknamettackname: AttacknameVariable.value,
-            AttackPosition: AttackPositionVariable.value,
-    };
-        const headers = {
-          'Bearer': token,
-          'Content-Type': 'application/json',
-        };
-
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify(requestData),
-        });
-
-        if (response.ok) {
-          console.log('Attack created successfully');
-          // Perform any additional actions after successful profile deletion
-          this.$router.push('/'); // Redirect to the home page or another page
-        } else {
-          console.error('Failed to create Attack ');
-          // Handle the error if needed
-        }
-      } catch (error) {
-        console.error('Error during attack creation:', error);
-        // Handle the error if needed
-      }
-    },
-  },
 };
 </script>

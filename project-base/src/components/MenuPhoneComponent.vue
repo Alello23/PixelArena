@@ -152,7 +152,7 @@ import CreateAttackComponent from '../components/CreateAttackComponent.vue';
                                 </div>
                     </section>
                     <footer class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-target="#shop" data-bs-toggle="modal">Back</button>
+                        <button type="button" class="btn btn-secondary" data-bs-target="#shop_1" data-bs-toggle="modal">Back</button>
                     </footer>
                     </div>
                     </div>
@@ -196,7 +196,7 @@ import CreateAttackComponent from '../components/CreateAttackComponent.vue';
                                 </div>
                                 <div class="col-3 ">
                                     <div class="space_between">
-                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal"> <h4>Cancel</h4></button>
+                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop_1" data-bs-toggle="modal"> <h4>Cancel</h4></button>
                                     </div>
                                 </div>
                                 <div class="col-2 ">
@@ -205,7 +205,7 @@ import CreateAttackComponent from '../components/CreateAttackComponent.vue';
                                 </div>
                                 <div class="col-3">
                                     <div class="space_between">
-                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal"> <h4>Sell</h4></button>
+                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop_1" data-bs-toggle="modal"> <h4>Sell</h4></button>
                                     </div>
                                 </div>
                                 <div class="col-2 ">
