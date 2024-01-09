@@ -1,5 +1,23 @@
 <script setup>
+import { ref } from 'vue';
 import DropDownShopComponent from '../components/DropDownShopComponent.vue';
+import InputComponent from '../components/InputComponent.vue';
+
+const AttacknameVariable = ref('');
+const AttackPositionVariable = ref('');
+const handleInput1 = (value) => {
+    AttacknameVariable.value = value;
+    console.log('Saved nameVariable: ', AttacknameVariable.value);
+};
+const handleAttackPosition = (payload) => {
+  // Access payload.dropdownId and payload.attack here
+  const {  AttackPosition } = payload;
+
+  // Update the selectedAttacks variable based on which dropdown emitted the payload
+  AttackPositionVariable.value = AttackPosition;
+  console.log('Saved AttackPositionVariable: ', payload);
+};
+
 </script>
 <template>
    <div class="modal fade" tabindex="-1" :id="id">
@@ -13,15 +31,16 @@ import DropDownShopComponent from '../components/DropDownShopComponent.vue';
                                     <div class="col" >
                                         <div class="row">
                                         <div class="col rounded-column-2 text-center" style="background-color: #DECA91;" >
-                                            <h1>Create attack ligma balls</h1>
+                                            <h1>Create attack</h1>
                                             <div class="col"> 
                                             <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
                                                 <div class="custom-button"  style="background-color: #DECA91;">
-                                                <AddData placeholderText="Add name to the attack" />
+                                                <InputComponent label="Add name to the attack" v-model="AttacknameVariable"
+                                                :maxCharacters="20" @update:parentValue="handleInput1"></InputComponent>
                                                 </div>
                                             </div>
                                             <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
-                                                <DropDownShopComponent label="Position"></DropDownShopComponent>
+                                                <DropDownShopComponent label="Position" @attackPosition-selected="handleAttackPosition"></DropDownShopComponent>
                                             </div> 
                                         </div> 
                                         </div>
@@ -49,7 +68,7 @@ import DropDownShopComponent from '../components/DropDownShopComponent.vue';
                                         </div>
                                         <div class="col-3">
                                             <div class="space_between" >
-                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal"> <h4>Create</h4></button>
+                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-toggle="modal" @click="createAttack"> <h4>Create</h4></button>
                                                 </div>
                                         </div>
                                         <div class="col-2 ">
@@ -69,6 +88,41 @@ import DropDownShopComponent from '../components/DropDownShopComponent.vue';
 export default {
     props: {
       id: String
-    }
+    },
+  methods: {
+    async createAttack() {
+      try {
+        const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
+        const token = this.$store.getters.getplayer.token;
+        console.log('RegisThe value of the token is: ' , token);
+        const requestData = {
+            attacknamettackname: AttacknameVariable.value,
+            AttackPosition: AttackPositionVariable.value,
+    };
+        const headers = {
+          'Bearer': token,
+          'Content-Type': 'application/json',
+        };
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(requestData),
+        });
+
+        if (response.ok) {
+          console.log('Attack created successfully');
+          // Perform any additional actions after successful profile deletion
+          this.$router.push('/'); // Redirect to the home page or another page
+        } else {
+          console.error('Failed to create Attack ');
+          // Handle the error if needed
+        }
+      } catch (error) {
+        console.error('Error during attack creation:', error);
+        // Handle the error if needed
+      }
+    },
+  },
 };
 </script>

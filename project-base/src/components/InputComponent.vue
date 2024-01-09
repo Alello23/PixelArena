@@ -21,7 +21,7 @@ export default {
     parentValue: String, // Pass the parent variable as a prop
     maxCharacters: {
       type: Number,
-      default: 21, // Set the default maximum characters
+      default: 20, // Set the default maximum characters
     },
   },
   data() {
