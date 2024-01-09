@@ -10,8 +10,8 @@
       <h1 style="color: black;">{{ selectedAttack || label }}</h1>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">
-      <li v-for="attack in backpackedAttacks" :key="attack.name">
-        <a class="dropdown-item" @click="selectAttack(attack)">{{ attack.name }}</a>
+      <li v-for="attack in backpackedAttacks" :key="attack.attack_ID">
+        <a class="dropdown-item" @click="selectAttack(attack)">{{ attack.attack_ID }}</a>
       </li>
     </ul>
   </div>
@@ -37,13 +37,13 @@ export default {
    },
   methods: {
     selectAttack(attack) {
-      this.selectedAttackValue = attack.name;
+      this.selectedAttackValue = attack.attack_ID;
     this.$emit('attack-selected', { dropdownId: this.dropdownId, attack: attack });
     },
     getSelectedAttackFromStore() {
      // Use the store to get the initial selected attack value
      const selectedAttack = this.$store.getters.getSelectedAttack(this.dropdownId);
-     return selectedAttack ? selectedAttack.name : null;
+     return selectedAttack ? selectedAttack.attack_ID : null;
   },
   },
   data() {

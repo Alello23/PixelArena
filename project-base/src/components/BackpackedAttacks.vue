@@ -6,9 +6,9 @@
       </div>
     </div>
 
-    <div v-for="attack in backpackedAttacks" :key="attack.name" class="space_between">
+    <div v-for="attack in backpackedAttacks" :key="attack.attack_ID" class="space_between">
       <div v-if="attack" class="col rounded-column-2 text-center" :style="{ backgroundColor: '#6B8E9E', padding: '0.5rem', marginRight: margins, marginLeft: margins }">
-        <h5>{{ attack.name }}</h5>
+        <h5>{{ attack.attack_ID }}</h5>
       </div>
     </div>
 

@@ -32,6 +32,9 @@ export const setupStore = (app) => {
       setUserData(state, userData) {
         state.player = userData;
       },
+      clearBackpackedAttacks(state) {
+        state.backpackedAttacks = [];
+      },
       
     },
     actions: {
@@ -52,6 +55,10 @@ export const setupStore = (app) => {
       },
       setUserData({ commit }, userData) {
         commit('setUserData', userData);
+      },
+      clearAllBackpackedAttacks({ commit }) {
+        commit('clearBackpackedAttacks');
+        // Optionally, you can also persist the updated state to a backend or localStorage.
       },
     },
     getters: {

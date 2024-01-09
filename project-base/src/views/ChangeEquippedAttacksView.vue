@@ -46,8 +46,8 @@ const SaveAttacks = async () =>{
     // The payload is an object with dropdown and attack properties
     // Modify this based on your store structure
     store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
-    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown1.name);
-    console.log('Index and attack name:', index, dropdown1.name);
+    const index = store.state.backpackedAttacks.findIndex((a) => a.attack_ID === dropdown1.attack_ID);
+    console.log('Index and attack name:', index, dropdown1.attack_ID);
     // If the attack is found, delete it from the backpackedAttacks
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
@@ -58,8 +58,8 @@ const SaveAttacks = async () =>{
   if (dropdown2 !== null) {
     
     store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
-    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown2.name);
-    console.log('Index and attack name:', index, dropdown2.name);
+    const index = store.state.backpackedAttacks.findIndex((a) => a.attack_ID === dropdown2.attack_ID);
+    console.log('Index and attack name:', index, dropdown2.attack_ID);
     // If the attack is found, delete it from the backpackedAttacks
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
@@ -70,8 +70,8 @@ const SaveAttacks = async () =>{
   if (dropdown3 !== null) {
     
     store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
-    const index = store.state.backpackedAttacks.findIndex((a) => a.name === dropdown3.name);
-    console.log('Index and attack name:', index, dropdown3.name);
+    const index = store.state.backpackedAttacks.findIndex((a) => a.attack_ID === dropdown3.attack_ID);
+    console.log('Index and attack name:', index, dropdown3.attack_ID);
     // If the attack is found, delete it from the backpackedAttacks
     if (index !== -1) {
       store.dispatch('deleteBackpackedAttack', index);
@@ -86,7 +86,7 @@ const sendAttacksToAPI = async (dropdown, TransferdAttack) => {
   const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks/';
 
   if (TransferdAttack !== null && dropdown !== null) {
-    await sendAttack(apiUrl, dropdown.name, TransferdAttack.name);
+    await sendAttack(apiUrl, dropdown.attack_ID, TransferdAttack.attack_ID);
   }
 };
 

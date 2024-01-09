@@ -4,9 +4,10 @@ import BackpackedAttacks from '../components/BackpackedAttacks.vue';
 import EquippedAttacks from '../components/EquippedAttacks.vue';
 import BackpackedAttackInput from '../components/BackpackedAttackInput.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useStore } from 'vuex';
 
 const isSmallDevice = ref(false);
-
+const store = useStore();
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
 };
@@ -18,6 +19,38 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize);
+});
+
+// Fetch attacks from the API when the component is mounted
+onMounted(async () => {
+  try {
+    const apiUrl = 'https://balandrau.salle.url.edu/i3/players/attacks';
+    const token = store.getters.getplayer.token;
+    const headers = {
+      'Bearer': token,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: headers,
+    });;
+
+    if (response.ok) {
+      store.dispatch('clearAllBackpackedAttacks');
+      const attacks = await response.json();
+      // Dispatch the attacks to the store
+      attacks.forEach((backpackedAttacks) => {
+        console.log('Passed Attacks: ', backpackedAttacks.value);
+        store.dispatch('addBackpackedAttack', backpackedAttacks);
+      });
+    } else {
+      console.error('Failed to fetch attacks');
+    }
+  } catch (error) {
+    console.error('Error during attack fetch:', error);
+    // Handle the error if needed
+  }
 });
 </script>
 

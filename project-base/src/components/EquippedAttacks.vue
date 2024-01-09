@@ -20,7 +20,7 @@ export default {
   methods: {
     getEquippedAttackName(dropdown) {
       const equippedAttack = this.$store.getters.getSelectedAttack(dropdown);
-      return equippedAttack ? equippedAttack.name : null;
+      return equippedAttack ? equippedAttack.attack_ID : null;
     },
     getDefaultAttackName(dropdown) {
       // Provide default names based on the dropdown
