@@ -8,16 +8,22 @@ const store = useStore();
 
 const AttacknameVariable = ref('');
 const AttackPositionVariable = ref('');
+const ImageVariable = ref('');
 
 const handleInput1 = (value) => {
     AttacknameVariable.value = value;
     console.log('Saved nameVariable: ', AttacknameVariable.value);
 };
 
+const handleInput2 = (value) => {
+    ImageVariable.value = value;
+    console.log('Saved ImageVariable: ', ImageVariable.value);
+};
+
 const handleAttackPosition = (payload) => {
-    const { AttackPosition } = payload;
-    AttackPositionVariable.value = AttackPosition;
-    console.log('Saved AttackPositionVariable: ', payload);
+   
+    AttackPositionVariable.value = payload;
+    console.log('Saved AttackPositionVariable: ',  AttackPositionVariable.value);
 };
 const createAttack = async () => {
   try {
@@ -28,10 +34,12 @@ const createAttack = async () => {
     const requestData = {
       attack_ID: AttacknameVariable.value,
       positions: AttackPositionVariable.value,
+      img: ImageVariable.value,
     };
 
     console.log('Passed attack_ID: ', AttacknameVariable.value);
     console.log('Passed positions: ', AttackPositionVariable.value);
+    console.log('Passed Image: ', ImageVariable.value);
 
     const headers = {
       'Bearer': token,
@@ -85,6 +93,12 @@ const createAttack = async () => {
                                             <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
                                                 <DropDownShopComponent label="Position" @attackPosition-selected="handleAttackPosition"></DropDownShopComponent>
                                             </div> 
+                                            <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
+                                                <div class="custom-button"  style="background-color: #DECA91;">
+                                                <InputComponent label="Add image to the attack" v-model="ImageVariable"
+                                                :maxCharacters="150" @update:parentValue="handleInput2"></InputComponent>
+                                                </div>
+                                            </div>
                                         </div> 
                                         </div>
                                         </div>
