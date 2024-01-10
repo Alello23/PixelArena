@@ -41,8 +41,11 @@ onMounted(async () => {
       const attacks = await response.json();
       // Dispatch the attacks to the store
       attacks.forEach((backpackedAttacks) => {
+        if (backpackedAttacks.equipped != true) {
+          store.dispatch('addBackpackedAttack', backpackedAttacks);
+        }
         console.log('Passed Attacks: ', backpackedAttacks.value);
-        store.dispatch('addBackpackedAttack', backpackedAttacks);
+        
       });
     } else {
       console.error('Failed to fetch attacks');
