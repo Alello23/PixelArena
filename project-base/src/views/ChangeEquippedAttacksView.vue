@@ -4,8 +4,10 @@ import DropDownComponent from '../components/DropDownComponent.vue';
 import ButtonComponent_information from '../components/ButtonComponent_information.vue';
 import { useStore } from 'vuex';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const store = useStore();
+const router = useRouter();
 
 const selectedAttacks = ref({
   dropdown1: null,
@@ -23,9 +25,9 @@ const handleSaveAttacks = (payload) => {
 };
 const SaveAttacks = async () =>{
 
-  //const TransferdAttack1 = store.getters.getSelectedAttack('dropdown1');
-  //const TransferdAttack2 = store.getters.getSelectedAttack('dropdown2'); 
-  //const TransferdAttack3 = store.getters.getSelectedAttack('dropdown3');
+  const TransferdAttack1 = store.getters.getSelectedAttack('dropdown1');
+  const TransferdAttack2 = store.getters.getSelectedAttack('dropdown2'); 
+  const TransferdAttack3 = store.getters.getSelectedAttack('dropdown3');
 
   // Update the store with the selected attacks
   const { dropdown1, dropdown2, dropdown3 } = selectedAttacks.value;
@@ -37,26 +39,70 @@ const SaveAttacks = async () =>{
     // The payload is an object with dropdown and attack properties
     // Modify this based on your store structure
     store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
+    if(TransferdAttack1 !== null){
+      await changeAttacksToAPI(dropdown1,TransferdAttack1);
+    }
+    else{
+      await sendAttacksToAPI(dropdown1);
+    }
     // If the attack is found, delete it from the backpackedAttacks
-    await sendAttacksToAPI(dropdown1);
   }
 
   if (dropdown2 !== null) {
     
     store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
     // If the attack is found, delete it from the backpackedAttacks
-    await sendAttacksToAPI(dropdown2);
+    if(TransferdAttack2 !== null){
+      await changeAttacksToAPI(dropdown2,TransferdAttack2);
+    }
+    else{
+     await sendAttacksToAPI(dropdown2);
+    }
   }
 
   if (dropdown3 !== null) {
     
     store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
     // If the attack is found, delete it from the backpackedAttacks
-    await sendAttacksToAPI(dropdown3);
+    if(TransferdAttack3 !== null){
+      await changeAttacksToAPI(dropdown3,TransferdAttack3);
+    }
+    else{
+      await sendAttacksToAPI(dropdown3);
+    }
   }
   console.log('Save Attack:', selectedAttacks.value);
 };
+const changeAttacksToAPI = async (dropdown, TransferdAttack) => {
+  try {
+    const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${dropdown.attack_ID}/${TransferdAttack.attack_ID}`;
+    const token = store.getters.getplayer.token;
+    console.log('Attack send to equip:', dropdown.attack_ID);
+    console.log('Attack send to unequip:', TransferdAttack.attack_ID);
+    const headers = {
+      'Bearer': token,
+      'Content-Type': 'application/json',
+    };
 
+    const response = await fetch(apiUrl, {
+      method: 'PATCH', // Assuming you want to perform a POST request
+      headers: headers,
+      // Add any additional data in the body if needed
+      // body: JSON.stringify({ /* your data */ }),
+    });
+
+    if (response.ok) {
+      console.log(`Attack updated successfully: ${apiUrl}`);
+      router.push('/inventory'); // Redirect to the inventory page or another page
+    } else {
+      console.error(`Failed to update Attack: ${apiUrl}`);
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during attack update:', error);
+    // Handle the error if needed
+  }
+};
 const sendAttacksToAPI = async (dropdown) => {
   try {
     const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${dropdown.attack_ID}`;
@@ -76,7 +122,7 @@ const sendAttacksToAPI = async (dropdown) => {
 
     if (response.ok) {
       console.log(`Attack updated successfully: ${apiUrl}`);
-      this.$router.push('/inventory'); // Redirect to the home page or another page
+      router.push('/inventory'); // Redirect to the inventory page or another page
     } else {
       console.error(`Failed to update Attack: ${apiUrl}`);
       // Handle the error if needed

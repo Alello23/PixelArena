@@ -2,7 +2,6 @@
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import BackpackedAttacks from '../components/BackpackedAttacks.vue';
 import EquippedAttacks from '../components/EquippedAttacks.vue';
-import BackpackedAttackInput from '../components/BackpackedAttackInput.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useStore } from 'vuex';
 
@@ -39,10 +38,24 @@ onMounted(async () => {
     if (response.ok) {
       store.dispatch('clearAllBackpackedAttacks');
       const attacks = await response.json();
+      let i = 0;
       // Dispatch the attacks to the store
       attacks.forEach((backpackedAttacks) => {
         if (backpackedAttacks.equipped != true) {
           store.dispatch('addBackpackedAttack', backpackedAttacks);
+        }
+        if (backpackedAttacks.equipped == true) {
+          i++;
+          if (i == 1){
+            store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: backpackedAttacks });
+          }
+          if (i == 2){
+            store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: backpackedAttacks });
+          }
+          if (i == 3){
+            store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: backpackedAttacks });
+          }
+          
         }
         console.log('Passed Attacks: ', backpackedAttacks.value);
         
@@ -98,9 +111,6 @@ onMounted(async () => {
   <div class="col"> 
     <div class="spacer" style="height: 560px;"></div>
     <section class="col">
-      <div class="space_between">
-        <BackpackedAttackInput ></BackpackedAttackInput>
-      </div>
       <div class="space_between">
         <ButtonComponent_profile label="Change equipped atacks" path="/changeequippedattacks" color="#8C9A45"></ButtonComponent_profile>
       </div>
