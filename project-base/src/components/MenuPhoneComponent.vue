@@ -1,8 +1,7 @@
 <script setup>
 import ButtonComponentColor from '../components/ButtonComponentColor.vue';
-import DropDownComponent from '../components/DropDownComponent.vue';
-import AddData from './AddData.vue';
 import CreateAttackComponent from '../components/CreateAttackComponent.vue';
+import SellAttackComponent from '../components/SellAttackComponent.vue';
 </script>
 
 <template>
@@ -158,68 +157,9 @@ import CreateAttackComponent from '../components/CreateAttackComponent.vue';
                     </div>
                     </div>
                     <!-- Part del sell -->
-                    <div class="modal fade" tabindex="-1" id="sellAttack_1">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            <div class="col self-align-center">
-                                <div class="col">
-                                <div class="row">
-                                    <div class="col rounded-column-2 text-center" style="background-color: #DECA91;">
-                                    <h1>Sell an attack</h1>
-                                    <div class="col">
-                                        <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-                                        <DropDownComponent>Select the attack you want to sell</DropDownComponent>
-                                        </div>
-                                        <div class="space_between" style="margin-right: 60px; margin-left: 60px;">
-                                        <div class="custom-button" style="background-color: #DECA91;">
-                                            <AddData placeholderText="Set a price" />
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="space_between">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="row">
-                                <div class="col-2 ">
-                                    <div class="space_between">
-                                    </div>
-                                </div>
-                                <div class="col-3 ">
-                                    <div class="space_between">
-                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop_1" data-bs-toggle="modal"> <h4>Cancel</h4></button>
-                                    </div>
-                                </div>
-                                <div class="col-2 ">
-                                    <div class="space_between">
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="space_between">
-                                    <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop_1" data-bs-toggle="modal"> <h4>Sell</h4></button>
-                                    </div>
-                                </div>
-                                <div class="col-2 ">
-                                    <div class="space_between">
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    <SellAttackComponent id="sellAttack_1" data_bs_target="#shop_1"></SellAttackComponent>
                     <!-- Part del create -->
-                    <CreateAttackComponent id="createAttack_1"></CreateAttackComponent>
+                    <CreateAttackComponent id="createAttack_1" data_bs_target="#shop_1"></CreateAttackComponent>
                     <!-- Part del confirm -->
                     <div class="modal fade" tabindex="-1" id="buyConfirmation_1">
                 <div class="modal-dialog modal-dialog-centered modal-lg">

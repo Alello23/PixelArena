@@ -54,11 +54,14 @@ const createAttack = async () => {
 
     if (response.ok) {
       console.log('Attack created successfully');
-      // Perform any additional actions after successful profile deletion
-      // Use the `router` provided by the context to navigate
-      // You might need to import the router if it's not available in the setup context
-      // import { router } from 'your-router-file-path';
-      // router.push('/');
+      // Get the element you want to update
+      const targetElement = document.getElementById('yourElementId');
+
+      // Check if the element exists before updating the attribute
+      if (targetElement) {
+        targetElement.setAttribute('data-bs-target', 'data_bs_target');
+      }
+      
     } else {
       console.error('Failed to create Attack ');
       // Handle the error if needed
@@ -116,7 +119,7 @@ const createAttack = async () => {
                                         </div>
                                         <div class="col-3 ">
                                             <div class="space_between" >
-                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal"> <h4>Cancel</h4></button>
+                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" :data-bs-target="data_bs_target" data-bs-toggle="modal"> <h4>Cancel</h4></button>
                                                 </div>
                                         </div>
                                         <div class="col-2 ">
@@ -125,7 +128,7 @@ const createAttack = async () => {
                                         </div>
                                         <div class="col-3">
                                             <div class="space_between" >
-                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" data-bs-target="#shop" data-bs-toggle="modal" @click="createAttack"> <h4>Create</h4></button>
+                                                <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" :data-bs-target="data_bs_target" data-bs-toggle="modal" @click="createAttack"> <h4>Create</h4></button>
                                                 </div>
                                         </div>
                                         <div class="col-2 ">
@@ -144,7 +147,8 @@ const createAttack = async () => {
 
 export default {
     props: {
-      id: String
+      id: String,
+      data_bs_target: String
     },
 };
 </script>
