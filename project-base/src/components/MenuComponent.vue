@@ -20,7 +20,7 @@ import shopComponent from '../components/shopComponent.vue';
             <!-- Part del create -->
             <CreateAttackComponent id="createAttack"  data_bs_target="#shop"></CreateAttackComponent>
             <!-- Part del confirm -->
-            <confirmBuyAttackComponent id="buyConfirmation" ></confirmBuyAttackComponent>
+            <confirmBuyAttackComponent id="buyConfirmation" data_bs_target="#buyAttack" ></confirmBuyAttackComponent>
             
             <router-link to="/inventory">
                 <ButtonComponentColor label="Inventory" class="btn"></ButtonComponentColor>

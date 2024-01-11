@@ -32,7 +32,7 @@ import shopComponent from '../components/shopComponent.vue';
                     <!-- Part del create -->
                     <CreateAttackComponent id="createAttack_1" data_bs_target="#shop_1"></CreateAttackComponent>
                     <!-- Part del confirm -->
-                    <confirmBuyAttackComponent id="buyConfirmation_1" ></confirmBuyAttackComponent>
+                    <confirmBuyAttackComponent id="buyConfirmation_1" data_bs_target="#buyAttack_1" ></confirmBuyAttackComponent>
 
                 </div>
             </div>

@@ -1,4 +1,38 @@
 <script setup>
+import ButtonComponent_information from '../components/ButtonComponent_information.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const buyAttack = async () => {
+  try {
+    const selectedStoreAttack = store.getters.getSelectedStoreAttack;
+    const apiUrl = `https://balandrau.salle.url.edu/i3/shop/attacks/${selectedStoreAttack.attack_ID}/buy`;
+    const token = store.getters.getplayer.token;
+    console.log('Attack send to equip:', selectedStoreAttack.attack_ID);
+    const headers = {
+      'Bearer': token,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST', // Assuming you want to perform a POST request
+      headers: headers,
+      // Add any additional data in the body if needed
+      // body: JSON.stringify({ /* your data */ }),
+    });
+
+    if (response.ok) {
+      console.log(`Attack bought successfully: ${apiUrl}`);
+    } else {
+      console.error(`Failed to buy Attack: ${apiUrl}`);
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during attack purchase:', error);
+    // Handle the error if needed
+  }
+};
 
 </script>
 <template>
@@ -16,17 +50,14 @@
                                     <div style="border: 2px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); background-color: #87CEEB;"><h2>Are you sure you want to buy Attack1?</h2></div>
                                     <div class="space_between"></div> 
                                     <div class="confirmation-buttons d-flex justify-content-between">
-                                        <ButtonComponent_profile label="Save Changes" path="/confirmation" color="#8C9A45"><h3>NO</h3></ButtonComponent_profile>
-                                        <ButtonComponent_profile label="Save Changes" path="/confirmation" color="#8C9A45"><h3>YES</h3></ButtonComponent_profile>
+                                        <ButtonComponent_information label="No" :data-bs-target="data_bs_target" data-bs-toggle="modal" color="#CF5454"></ButtonComponent_information>
+                                        <ButtonComponent_information label="Yes" data-bs-dismiss="modal" color="#8C9A45" @click="buyAttack()"></ButtonComponent_information>
                                     </div>    
                                 </div>
                                 </div>
                             </div>
                             </div>
-                            <div class="col-2" >
-                                <div class="space_between">
-                                </div>
-                            </div>
+
                     </div>
                     </div>
                 </div>
@@ -38,6 +69,7 @@
 export default {
     props: {
       id: String,
+      data_bs_target: String
     },
 };
 </script>

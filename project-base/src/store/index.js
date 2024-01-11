@@ -18,6 +18,7 @@ export const setupStore = (app) => {
         coins: 10,
         token: '',
       },
+      selectedStoreAttack: null,
     },
     mutations: {
       setSelectedAttack(state, { dropdown, attack }) {
@@ -34,6 +35,9 @@ export const setupStore = (app) => {
       },
       clearBackpackedAttacks(state) {
         state.backpackedAttacks = [];
+      },
+      setSelectedStoreAttack(state, storeAttack) {
+        state.selectedStoreAttack = storeAttack;
       },
       
     },
@@ -60,11 +64,15 @@ export const setupStore = (app) => {
         commit('clearBackpackedAttacks');
         // Optionally, you can also persist the updated state to a backend or localStorage.
       },
+      selectStoreAttack({ commit }, storeAttack) {
+        commit('setSelectedStoreAttack', storeAttack);
+      },
     },
     getters: {
       getSelectedAttack: (state) => (dropdown) => state.equippedAttacks[dropdown],
       getBackpackedAttacks: (state) => state.backpackedAttacks,
       getplayer: (state) => state.player,
+      getSelectedStoreAttack: (state) => state.selectedStoreAttack,
     },
   });
 
