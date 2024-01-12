@@ -40,11 +40,13 @@ const SaveAttacks = async () =>{
     // Modify this based on your store structure
     store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
     if(TransferdAttack1 !== null){
-      await changeAttacksToAPI(dropdown1,TransferdAttack1);
-    }
-    else{
+      await deleteAttackFromAPI(TransferdAttack1);
+    }else{
       await sendAttacksToAPI(dropdown1);
     }
+   
+      
+
     // If the attack is found, delete it from the backpackedAttacks
   }
 
@@ -53,11 +55,12 @@ const SaveAttacks = async () =>{
     store.dispatch('selectAttack', { dropdown: 'dropdown2', attack: dropdown2 });
     // If the attack is found, delete it from the backpackedAttacks
     if(TransferdAttack2 !== null){
-      await changeAttacksToAPI(dropdown2,TransferdAttack2);
+      await deleteAttackFromAPI(TransferdAttack2);
+    }else{
+      await sendAttacksToAPI(dropdown2);
     }
-    else{
-     await sendAttacksToAPI(dropdown2);
-    }
+
+ 
   }
 
   if (dropdown3 !== null) {
@@ -65,41 +68,39 @@ const SaveAttacks = async () =>{
     store.dispatch('selectAttack', { dropdown: 'dropdown3', attack: dropdown3 });
     // If the attack is found, delete it from the backpackedAttacks
     if(TransferdAttack3 !== null){
-      await changeAttacksToAPI(dropdown3,TransferdAttack3);
-    }
-    else{
+      await deleteAttackFromAPI(TransferdAttack3);
+    }else{
       await sendAttacksToAPI(dropdown3);
     }
+   
   }
   console.log('Save Attack:', selectedAttacks.value);
 };
-const changeAttacksToAPI = async (dropdown, TransferdAttack) => {
+const deleteAttackFromAPI = async (attackId) => {
   try {
-    const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${dropdown.attack_ID}/${TransferdAttack.attack_ID}`;
+    const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${attackId.attack_ID}`;
     const token = store.getters.getplayer.token;
-    console.log('Attack send to equip:', dropdown.attack_ID);
-    console.log('Attack send to unequip:', TransferdAttack.attack_ID);
+    console.log('Attack send to Delete:', attackId.attack_ID);
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',
     };
 
     const response = await fetch(apiUrl, {
-      method: 'PATCH', // Assuming you want to perform a POST request
+      method: 'DELETE', // Assuming you want to perform a POST request
       headers: headers,
       // Add any additional data in the body if needed
       // body: JSON.stringify({ /* your data */ }),
     });
 
     if (response.ok) {
-      console.log(`Attack updated successfully: ${apiUrl}`);
-      router.push('/inventory'); // Redirect to the inventory page or another page
+      console.log(`Attack deleted successfully: ${apiUrl}`);
     } else {
-      console.error(`Failed to update Attack: ${apiUrl}`);
+      console.error(`Failed to delete Attack: ${apiUrl}`);
       // Handle the error if needed
     }
   } catch (error) {
-    console.error('Error during attack update:', error);
+    console.error('Error during attack deletion:', error);
     // Handle the error if needed
   }
 };
@@ -112,7 +113,8 @@ const sendAttacksToAPI = async (dropdown) => {
       'Bearer': token,
       'Content-Type': 'application/json',
     };
-
+      // Introduce a 100ms delay using setTimeout
+      await new Promise(resolve => setTimeout(resolve, 100));
     const response = await fetch(apiUrl, {
       method: 'POST', // Assuming you want to perform a POST request
       headers: headers,

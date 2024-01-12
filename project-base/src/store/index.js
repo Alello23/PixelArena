@@ -18,6 +18,13 @@ export const setupStore = (app) => {
         coins: 10,
         token: '',
       },
+      Searchedplayer: {
+        player_ID: '',
+        img: "src/assets/images/avatar.jpg",
+        xp: 0,
+        level: 0,
+        coins: 0,
+      },
       selectedStoreAttack: null,
     },
     mutations: {
@@ -38,6 +45,9 @@ export const setupStore = (app) => {
       },
       setSelectedStoreAttack(state, storeAttack) {
         state.selectedStoreAttack = storeAttack;
+      },
+      setSearchedplayer(state, storePlayer) {
+        state.Searchedplayer = storePlayer;
       },
       
     },
@@ -67,12 +77,16 @@ export const setupStore = (app) => {
       selectStoreAttack({ commit }, storeAttack) {
         commit('setSelectedStoreAttack', storeAttack);
       },
+      selectSearchedplayer({ commit }, storePlayer) {
+        commit('setSelectedStoreAttack', storePlayer);
+      },
     },
     getters: {
       getSelectedAttack: (state) => (dropdown) => state.equippedAttacks[dropdown],
       getBackpackedAttacks: (state) => state.backpackedAttacks,
       getplayer: (state) => state.player,
       getSelectedStoreAttack: (state) => state.selectedStoreAttack,
+      getSearchedplayer: (state) => state.Searchedplayer,
     },
   });
 
