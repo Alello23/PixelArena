@@ -78,7 +78,7 @@ export const setupStore = (app) => {
         commit('setSelectedStoreAttack', storeAttack);
       },
       selectSearchedplayer({ commit }, storePlayer) {
-        commit('setSelectedStoreAttack', storePlayer);
+        commit('setSearchedplayer', storePlayer);
       },
     },
     getters: {

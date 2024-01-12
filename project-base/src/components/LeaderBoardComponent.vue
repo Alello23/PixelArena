@@ -7,9 +7,10 @@ const store = useStore();
 const storeSearchedplayers= ref([]);
 const router = useRouter();
 
-const openPlayerProfile = (attack) => {
+const openPlayerProfile = (storeSearchedplayer) => {
   // To set the selected storeAttack
-  store.dispatch('selectStoreAttack', attack);
+  store.dispatch('selectSearchedplayer', storeSearchedplayer);
+  console.log('Selected player:', storeSearchedplayer.player_ID);
   router.push('/playergamehistory');
  
 };

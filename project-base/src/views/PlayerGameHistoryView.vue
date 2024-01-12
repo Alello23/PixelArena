@@ -1,10 +1,13 @@
 <script setup>
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 import PlayerProfileComponent from '../components/PlayerProfileComponent.vue';
-import ButtonComponent_information from '../components/ButtonComponent_information.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
 const isSmallDevice = ref(false);
+const selectedProfile = store.getters.getSearchedplayer;
+console.log('Selected player:', selectedProfile.player_ID);
 
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
@@ -46,13 +49,19 @@ onBeforeUnmount(() => {
     <div class="row" :class="{ 'isSmallDevice': isSmallDevice }" style="padding: 0rem; ">
         <div class="col" :class="{'col-12': isSmallDevice, 'col-6': !isSmallDevice}"  style="border: 5px solid #1E1E1E;">
             <div class="space_between">
-              <ButtonComponent_information label="Name"  color="#8C9A45"></ButtonComponent_information>
+              <div class="rounded-column-2 text-center" style="background-color: #8C9A45;" >
+                 <h8 >{{ selectedProfile.player_ID }}</h8>
+              </div>
             </div>
               <div class="space_between">
-                <ButtonComponent_information label="xp"  color="#8C9A45"></ButtonComponent_information>
+                <div class="rounded-column-2 text-center" style="background-color: #8C9A45;" >
+                 <h8 >{{ selectedProfile.xp }} xp</h8>
+              </div>
               </div> 
               <div class="space_between">
-                <ButtonComponent_information label="% games won"  color="#8C9A45"></ButtonComponent_information>
+                <div class="rounded-column-2 text-center" style="background-color: #8C9A45;" >
+                 <h8 >{{ selectedProfile.coins }} coins</h8>
+              </div>
               </div> 
         </div>
         <div class="col-6" v-if="!isSmallDevice" style="border: 5px solid #1E1E1E;">

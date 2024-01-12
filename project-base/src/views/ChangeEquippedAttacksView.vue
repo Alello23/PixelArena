@@ -41,11 +41,9 @@ const SaveAttacks = async () =>{
     store.dispatch('selectAttack', { dropdown: 'dropdown1', attack: dropdown1 });
     if(TransferdAttack1 !== null){
       await deleteAttackFromAPI(TransferdAttack1);
-    }else{
-      await sendAttacksToAPI(dropdown1);
     }
-   
-      
+
+      await sendAttacksToAPI(dropdown1);
 
     // If the attack is found, delete it from the backpackedAttacks
   }
@@ -56,11 +54,8 @@ const SaveAttacks = async () =>{
     // If the attack is found, delete it from the backpackedAttacks
     if(TransferdAttack2 !== null){
       await deleteAttackFromAPI(TransferdAttack2);
-    }else{
-      await sendAttacksToAPI(dropdown2);
     }
-
- 
+      await sendAttacksToAPI(dropdown2);
   }
 
   if (dropdown3 !== null) {
@@ -69,9 +64,8 @@ const SaveAttacks = async () =>{
     // If the attack is found, delete it from the backpackedAttacks
     if(TransferdAttack3 !== null){
       await deleteAttackFromAPI(TransferdAttack3);
-    }else{
-      await sendAttacksToAPI(dropdown3);
     }
+      await sendAttacksToAPI(dropdown3);
    
   }
   console.log('Save Attack:', selectedAttacks.value);
@@ -113,8 +107,6 @@ const sendAttacksToAPI = async (dropdown) => {
       'Bearer': token,
       'Content-Type': 'application/json',
     };
-      // Introduce a 100ms delay using setTimeout
-      await new Promise(resolve => setTimeout(resolve, 100));
     const response = await fetch(apiUrl, {
       method: 'POST', // Assuming you want to perform a POST request
       headers: headers,
