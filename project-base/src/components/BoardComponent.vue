@@ -1,41 +1,31 @@
 <script setup>
-import part from './PartBoardComponent.vue'
+const props = defineProps(['size']);
 </script>
 
 <template>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col">
-                <part></part>
-            </div>
-            <div class="col">
-                <part></part>
-            </div>
-        </div>
-        <div class="row justify-content-center align-items-center">
-            <div class="col">
-                <part></part>
-            </div>
-            <div class="col">
-                <part></part>
-            </div>
-        </div>
-    </div>
+  <div class="board-container">
+    <!-- Aquí puedes cargar las imágenes del tablero desde src\assets\boards\ -->
+    <img :src="`src/assets/boards/${size}x${size}.png`" alt="Board">
+    <div class="spritesheet-frame"></div>
+  </div>
 </template>
 
 <style scoped>
-    .container {
-        background-image: url('src/assets/boards/2x2.png');
-        background-size: 641px 641px;
-        background-repeat: no-repeat;
-        background-position: top;
-        height: 65vh;
-    }   
-    .row{
-        width: 480px;
-    }
-    .col{
-        height: 224px;
-    }
-   
+.board-container {
+  position: relative;
+  margin-top: 32px; /* Ajusta según sea necesario */
+  margin-left: 64px; /* Ajusta según sea necesario */
+}
+
+.spritesheet-frame {
+  position: absolute;
+  top: 0px;
+  left: 650px;
+  width: 24px;
+  height: 24px;
+  background-image: url('src/assets/player/idle.png');
+  background-position: -32px 0;
+  background-size: auto; 
+}
+
 </style>
