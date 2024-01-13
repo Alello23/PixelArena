@@ -2,10 +2,13 @@
 import { useStore } from 'vuex';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { computed } from 'vue';
 
 const store = useStore();
 const storeSearchedplayers= ref([]);
 const router = useRouter();
+const searchQuery = ref('');
+let players = [];
 
 const openPlayerProfile = (storeSearchedplayer) => {
   // To set the selected storeAttack
@@ -14,6 +17,11 @@ const openPlayerProfile = (storeSearchedplayer) => {
   router.push('/playergamehistory');
  
 };
+const filteredPlayers = computed(() => {
+  // Use a computed property to filter players based on the searchQuery
+  const query = searchQuery.value.toLowerCase();
+  return storeSearchedplayers.value.filter(player => player.player_ID.toLowerCase().includes(query));
+});
 
 onMounted(async () => {
     try {
@@ -30,8 +38,8 @@ onMounted(async () => {
     });;
 
     if (response.ok) {
-     const players = await response.json();
-     storeSearchedplayers.value = players
+     players = await response.json();
+     storeSearchedplayers.value = players.sort((a, b) => b.xp - a.xp);
     } else {
       console.error('Failed to fetch players');
     }
@@ -40,6 +48,11 @@ onMounted(async () => {
     // Handle the error if needed :data-bs-target="buyConfirmation" data-bs-toggle="modal"
   }
 });
+const searchPlayer = () => {
+  // Filter players based on the searchQuery
+  const query = searchQuery.value.toLowerCase();
+  storeSearchedplayers.value = players.filter(player => player.player_ID.toLowerCase().includes(query));
+};
 
 </script>
 
@@ -48,6 +61,11 @@ onMounted(async () => {
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
         <div class="modal-body">
+          <div class="col">
+            <form class="d-flex" role="search" @submit.prevent="searchPlayer">
+              <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search Player" aria-label="Search">
+            </form>
+          </div>
                 <div class="row">
                     <div class="col-2" style="padding: 0rem;">
                           <button type="button" class="custom-button" style="background-color: #EAEAEA;"> <h4>XP</h4></button>     
@@ -62,7 +80,7 @@ onMounted(async () => {
              <div class="row">
               <div class="col" style=" max-height: 375px; overflow-y: scroll; padding: 4rem;"> 
                 <div class="space_between" >
-                <div v-for="storeSearchedplayer in storeSearchedplayers" :key="storeSearchedplayer.player_ID" class="space_between">
+                  <div v-for="storeSearchedplayer in filteredPlayers" :key="storeSearchedplayer.player_ID" class="space_between">
                                                 <div class="row rounded-column-1" data-bs-dismiss="modal" style="padding: 0rem; background-color: #C0D6DF; text-decoration: none;" @click="openPlayerProfile(storeSearchedplayer)"> 
                                                 <div class="col-2 " style="padding: 0rem;">
                                                     <button type="button" class="custom-button" style="background-color: #C0D6DF; border: none;"><h4>{{ storeSearchedplayer.xp }}</h4></button>

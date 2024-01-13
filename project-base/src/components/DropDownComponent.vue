@@ -30,9 +30,9 @@ export default {
       return this.selectedAttackValue;
     },
     backpackedAttacks() {
-      const store = useStore();
       // Retrieve backpacked attacks from the store or modify based on your store structure
-      return store.state.backpackedAttacks;
+      const store = useStore();
+      return store.state.backpackedAttacks.filter(attack => !attack.on_sale);
     },
    },
   methods: {

@@ -40,6 +40,11 @@ export const setupStore = (app) => {
       setUserData(state, userData) {
         state.player = userData;
       },
+      setPlayerInfo(state, userData) {
+        state.player.xp = userData.xp;
+        state.player.level = userData.level;
+        state.player.coins = userData.coins;
+      },
       clearBackpackedAttacks(state) {
         state.backpackedAttacks = [];
       },
@@ -69,6 +74,9 @@ export const setupStore = (app) => {
       },
       setUserData({ commit }, userData) {
         commit('setUserData', userData);
+      },
+      setPlayerInfo({ commit }, userData) {
+        commit('setPlayerInfo', userData);
       },
       clearAllBackpackedAttacks({ commit }) {
         commit('clearBackpackedAttacks');

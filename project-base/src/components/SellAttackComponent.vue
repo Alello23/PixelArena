@@ -3,12 +3,14 @@ import DropDownComponent from '../components/DropDownComponent.vue';
 import InputComponent from '../components/InputComponent.vue';
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const store = useStore();
 const PriceVariable = ref('');
+const sellSuccess = ref(null);
 
 const selectedAttacks = ref({ dropdown: null});
+const showError = computed(() => sellSuccess.value === false);
 
 const handleSaveAttacks = (payload) => {
     console.log('Selected Attack Payload:', payload);
@@ -48,9 +50,11 @@ const sellAttack = async () => {
 
     if (response.ok) {
       console.log('Attack put on sale successfully');
+      sellSuccess.value = true; 
     } else {
       console.error('Failed to sell Attack ');
       // Handle the error if needed
+      sellSuccess.value = false;
     }
   } catch (error) {
     console.error('Error during attack selling:', error);
@@ -114,6 +118,9 @@ onMounted(async () => {
                     <InputComponent label="Set a price" v-model="PriceVariable"
                                                 :maxCharacters="21" @update:parentValue="handleInput2"></InputComponent>
                   </div>
+                  <div class="space_between" style="margin-right: 60px; margin-left: 60px; ">
+                                                    <div  v-if="showError" style="color: red;">Failed to sell Attack</div>
+                                            </div>  
                   </div>
               </div>
               </div>
@@ -142,7 +149,7 @@ onMounted(async () => {
           <div class="col-3">
               <div class="space_between">
               <button type="button" class="custom-button" style="background-color: #419FD6;border: 4px solid #000; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); padding: 20px 0; line-height: 2; color: white;" :data-bs-target="data_bs_target" data-bs-toggle="modal" @click="sellAttack"> <h4>Sell</h4></button>
-              </div>
+            </div>
           </div>
           <div class="col-2 ">
               <div class="space_between">

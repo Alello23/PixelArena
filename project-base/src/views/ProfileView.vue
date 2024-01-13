@@ -1,17 +1,48 @@
 <script setup>
+import { useStore } from 'vuex';
 import UserCardComponent from '../components/UserCardComponent.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import ButtonComponent_profile from '../components/ButtonComponent_profile.vue';
 
 const isSmallDevice = ref(false);
+const store = useStore();
 
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
 };
 
-onMounted(() => {
+onMounted(async () => {
   checkScreenSize();
   window.addEventListener('resize', checkScreenSize);
+  try {
+    const player = store.getters.getplayer;
+    const apiUrl = `https://balandrau.salle.url.edu/i3/players/${player.player_ID}  `;
+    const token = store.getters.getplayer.token;
+    console.log('Player of the info:', player.player_ID);
+    const headers = {
+      'Bearer': token,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'GET', // Assuming you want to perform a POST request
+      headers: headers,
+      // Add any additional data in the body if needed
+      // body: JSON.stringify({ /* your data */ }),
+    });
+
+    if (response.ok) {
+      console.log(`info from player got successfully: ${apiUrl}`);
+      const userData = await response.json();
+      store.dispatch('setPlayerInfo', userData);
+    } else {
+      console.error(`Failed to get info from player: ${apiUrl}`);
+      // Handle the error if needed
+    }
+  } catch (error) {
+    console.error('Error during info obtention:', error);
+    // Handle the error if needed
+  }
 });
 
 onBeforeUnmount(() => {
