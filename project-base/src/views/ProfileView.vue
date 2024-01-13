@@ -18,7 +18,6 @@ onMounted(async () => {
     const player = store.getters.getplayer;
     const apiUrl = `https://balandrau.salle.url.edu/i3/players/${player.player_ID}  `;
     const token = store.getters.getplayer.token;
-    console.log('Player of the info:', player.player_ID);
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',
@@ -32,15 +31,14 @@ onMounted(async () => {
     });
 
     if (response.ok) {
-      console.log(`info from player got successfully: ${apiUrl}`);
       const userData = await response.json();
       store.dispatch('setPlayerInfo', userData);
     } else {
-      console.error(`Failed to get info from player: ${apiUrl}`);
+      console.error(`Failed to get info from player`);
       // Handle the error if needed
     }
   } catch (error) {
-    console.error('Error during info obtention:', error);
+    console.error('Error during info obtention:');
     // Handle the error if needed
   }
 });

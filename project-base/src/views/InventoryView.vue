@@ -57,14 +57,14 @@ onMounted(async () => {
           }
           
         }
-        console.log('Passed Attacks: ', backpackedAttacks.value);
+       
         
       });
     } else {
       console.error('Failed to fetch attacks');
     }
   } catch (error) {
-    console.error('Error during attack fetch:', error);
+    console.error('Error during attack fetch:');
     // Handle the error if needed
   }
 });

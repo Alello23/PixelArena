@@ -15,35 +15,26 @@ const showError = computed(() => CreationSuccess.value === false);
 
 const handleInput1 = (value) => {
     AttacknameVariable.value = value;
-    console.log('Saved nameVariable: ', AttacknameVariable.value);
 };
 
 const handleInput2 = (value) => {
     ImageVariable.value = value;
-    console.log('Saved ImageVariable: ', ImageVariable.value);
 };
 
 const handleAttackPosition = (payload) => {
    
     AttackPositionVariable.value = payload;
-    console.log('Saved AttackPositionVariable: ',  AttackPositionVariable.value);
 };
 const createAttack = async () => {
   try {
     const apiUrl = 'https://balandrau.salle.url.edu/i3/shop/attacks';
     const token = store.getters.getplayer.token;
-    console.log('The value of the token is: ', token);
 
     const requestData = {
       attack_ID: AttacknameVariable.value,
       positions: AttackPositionVariable.value,
       img: ImageVariable.value,
     };
-
-    console.log('Passed attack_ID: ', AttacknameVariable.value);
-    console.log('Passed positions: ', AttackPositionVariable.value);
-    console.log('Passed Image: ', ImageVariable.value);
-
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',
@@ -60,7 +51,7 @@ const createAttack = async () => {
       // Get the element you want to update
       const targetElement = document.getElementById('yourElementId');
       CreationSuccess.value = true;
-      console.log('CreationSuccess value: ', CreationSuccess.value);
+      console.log('CreationSuccess');
       // Check if the element exists before updating the attribute
       if (targetElement) {
         targetElement.setAttribute('data-bs-target', 'data_bs_target');
@@ -72,7 +63,7 @@ const createAttack = async () => {
       CreationSuccess.value = false;
     }
   } catch (error) {
-    console.error('Error during attack creation:', error);
+    console.error('Error during attack creation');
     // Handle the error if needed
     CreationSuccess.value = false;
   }

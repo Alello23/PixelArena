@@ -16,29 +16,20 @@ const router = useRouter();
 // Function to handle changes in the input value for each instance
 const handleInput1 = (value) => {
     UsernameVariable.value = value;
-    console.log(UsernameVariable.value);
 };
 
 const handleInput2 = (value) => {
   PasswordVariable.value = value;
-  console.log(PasswordVariable.value);
 };
 
 const handleInput3 = (value) => {
  Password2Variable.value = value;
- console.log(Password2Variable.value);
 };
 const handleInput4 = (value) => {
     ImageVariable.value = value;
-    console.log(ImageVariable.value);
 };
 const register = async () => {
-    console.log('UsernameVariable: ',  UsernameVariable.value );
-    console.log('PasswordVariable: ',  PasswordVariable.value );
-    console.log('Password2Variable: ',  Password2Variable.value );
-    console.log('ImageVariable: ',  ImageVariable.value );
-
-  
+    
     if (
         UsernameVariable.value !== '' &&
         PasswordVariable.value !== '' &&
@@ -83,7 +74,7 @@ const sendRegisterRequest = async () => {
             return false; // Indicates unsuccessful registration
         }
     } catch (error) {
-        console.error('Error during fetch:', error);
+        console.error('Error during fetch:');
         // Handle the error if needed
         return false; // Indicates unsuccessful registration
     }
@@ -115,7 +106,7 @@ const handleLogin = async () => {
       // Handle the error if needed
     }
   } catch (error) {
-    console.error('Error during login:', error);
+    console.error('Error during login:');
     // Handle the error if needed
   }
 };

@@ -13,7 +13,6 @@ let players = [];
 const openPlayerProfile = (storeSearchedplayer) => {
   // To set the selected storeAttack
   store.dispatch('selectSearchedplayer', storeSearchedplayer);
-  console.log('Selected player:', storeSearchedplayer.player_ID);
   router.push('/playergamehistory');
  
 };
@@ -44,7 +43,7 @@ onMounted(async () => {
       console.error('Failed to fetch players');
     }
   } catch (error) {
-    console.error('Error during player fetch:', error);
+    console.error('Error during player fetch:');
     // Handle the error if needed :data-bs-target="buyConfirmation" data-bs-toggle="modal"
   }
 });

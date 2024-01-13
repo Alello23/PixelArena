@@ -15,12 +15,10 @@ const router = useRouter();
 // Function to handle changes in the input value for each instance
 const handleInput1 = (value) => {
     UsernameVariable.value = value;
-    console.log(UsernameVariable.value);
 };
 
 const handleInput2 = (value) => {
   PasswordVariable.value = value;
-  console.log(PasswordVariable.value);
 };
 
 
@@ -52,7 +50,7 @@ const handleLogin = async () => {
       // Handle the error if needed
     }
   } catch (error) {
-    console.error('Error during login:', error);
+    console.error('Error during login:');
     // Handle the error if needed
   }
 };

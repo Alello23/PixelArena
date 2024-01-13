@@ -13,7 +13,6 @@ const selectedAttacks = ref({ dropdown: null});
 const showError = computed(() => sellSuccess.value === false);
 
 const handleSaveAttacks = (payload) => {
-    console.log('Selected Attack Payload:', payload);
   // Access payload.dropdownId and payload.attack here
   const { dropdownId, attack } = payload;
 
@@ -22,7 +21,6 @@ const handleSaveAttacks = (payload) => {
 }; 
 const handleInput2 = (value) => {
     PriceVariable.value = value;
-    console.log('Saved PriceVariable: ', PriceVariable.value);
 
 };
 const sellAttack = async () => {
@@ -30,11 +28,8 @@ const sellAttack = async () => {
     const { dropdown } = selectedAttacks.value;
     const apiUrl = `https://balandrau.salle.url.edu/i3/shop/attacks/${dropdown.attack_ID}/sell`;
     const token = store.getters.getplayer.token;
-    console.log('The value of the token is: ', token);
-    console.log('Passed Attacks: ', dropdown.attack_ID);
     // Parse the value as an integer
     const priceValue = parseInt(PriceVariable.value, 10);
-    console.log('Passed PriceVariable: ', priceValue);
     const requestData = {
       price: priceValue,
     };
@@ -57,7 +52,7 @@ const sellAttack = async () => {
       sellSuccess.value = false;
     }
   } catch (error) {
-    console.error('Error during attack selling:', error);
+    console.error('Error during attack selling:');
     // Handle the error if needed
   }
 };
@@ -90,7 +85,7 @@ onMounted(async () => {
       console.error('Failed to fetch attacks');
     }
   } catch (error) {
-    console.error('Error during attack fetch:', error);
+    console.error('Error during attack fetch:');
     // Handle the error if needed
   }
 });

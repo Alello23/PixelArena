@@ -9,7 +9,6 @@ export default {
       try {
         const apiUrl = 'https://balandrau.salle.url.edu/i3/players/';
         const token = this.$store.getters.getplayer.token;
-        console.log('RegisThe value of the token is: ' , token);
         const headers = {
           'Bearer': token,
           'Content-Type': 'application/json',
@@ -29,7 +28,7 @@ export default {
           // Handle the error if needed
         }
       } catch (error) {
-        console.error('Error during profile deletion:', error);
+        console.error('Error during profile deletion:');
         // Handle the error if needed
       }
     },
