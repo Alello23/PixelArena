@@ -16,7 +16,7 @@ const selectedAttacks = ref({
 });
 
 const handleSaveAttacks = (payload) => {
-  console.log('Selected Attack Payload:', payload);
+ 
   // Access payload.dropdownId and payload.attack here
   const { dropdownId, attack } = payload;
 
@@ -68,13 +68,11 @@ const SaveAttacks = async () =>{
       await sendAttacksToAPI(dropdown3);
    
   }
-  console.log('Save Attack:', selectedAttacks.value);
 };
 const deleteAttackFromAPI = async (attackId) => {
   try {
     const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${attackId.attack_ID}`;
     const token = store.getters.getplayer.token;
-    console.log('Attack send to Delete:', attackId.attack_ID);
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',
@@ -88,13 +86,10 @@ const deleteAttackFromAPI = async (attackId) => {
     });
 
     if (response.ok) {
-      console.log(`Attack deleted successfully: ${apiUrl}`);
-    } else {
-      console.error(`Failed to delete Attack: ${apiUrl}`);
-      // Handle the error if needed
-    }
+      console.log(`Attack deleted successfully`);
+    } 
   } catch (error) {
-    console.error('Error during attack deletion:', error);
+    console.error('Error during attack deletion:');
     // Handle the error if needed
   }
 };
@@ -102,7 +97,6 @@ const sendAttacksToAPI = async (dropdown) => {
   try {
     const apiUrl = `https://balandrau.salle.url.edu/i3/players/attacks/${dropdown.attack_ID}`;
     const token = store.getters.getplayer.token;
-    console.log('Attack send to equip:', dropdown.attack_ID);
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',
@@ -115,14 +109,9 @@ const sendAttacksToAPI = async (dropdown) => {
     });
 
     if (response.ok) {
-      console.log(`Attack updated successfully: ${apiUrl}`);
       router.push('/inventory'); // Redirect to the inventory page or another page
-    } else {
-      console.error(`Failed to update Attack: ${apiUrl}`);
-      // Handle the error if needed
-    }
+    } 
   } catch (error) {
-    console.error('Error during attack update:', error);
     // Handle the error if needed
   }
 };

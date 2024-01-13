@@ -23,13 +23,13 @@ const buyAttack = async () => {
     });
 
     if (response.ok) {
-      console.log(`Attack bought successfully: ${apiUrl}`);
+      console.log(`Attack bought successfully`);
     } else {
-      console.error(`Failed to buy Attack: ${apiUrl}`);
+      console.error(`Failed to buy Attack`);
       // Handle the error if needed
     }
   } catch (error) {
-    console.error('Error during attack purchase:', error);
+    console.error('Error during attack purchase');
     // Handle the error if needed
   }
 };
