@@ -3,13 +3,8 @@ import Menu from '../components/MenuGameComponent.vue';
 import Board from '../components/BoardComponent.vue';
 
 const boardSizes = [2, 3, 4, 5, 6, 7, 8, 9, 10]; // Tamaños posibles de la pista
-let selectedBoardSize = 2; // Tamaño inicial del tablero
+let selectedBoardSize = 10; // Tamaño inicial del tablero
 
-const moveCharacter = (direction) => {
-  // Lógica para mover el personaje según la dirección proporcionada
-  // Puedes realizar acciones adicionales aquí si es necesario
-  console.log(`Moviendo el personaje hacia ${direction}`);
-};
 </script>
 
 <template>
