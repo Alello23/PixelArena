@@ -43,12 +43,10 @@ const currentIndex = ref(0);
 
 const handleInput1 = (value) => {
     hpVariable.value = value;
-    console.log('Saved hpVariable: ', hpVariable.value);
 };
 
 const handleInput2 = (value) => {
     nameVariable.value = value;
-    console.log('Saved nameVariable: ', nameVariable.value);
 };
 
 const handlePrev = () => {
@@ -63,17 +61,12 @@ const createGame = async () => {
   try {
     const apiUrl = 'https://balandrau.salle.url.edu/i3/arenas';
     const token = store.getters.getplayer.token;
-    console.log('The value of the token is: ', token);
 
     const requestData = {
       game_ID: nameVariable.value,
       size: parseInt(currentIndex.value) + 2,
       HP_max: parseInt(hpVariable.value),
     };
-
-    console.log('Passed Name: ', nameVariable.value);
-    console.log('Passed Size: ', currentIndex.value + 2);
-    console.log('Passed hp: ', hpVariable.value);
 
     const headers = {
       'Bearer': token,
@@ -87,14 +80,13 @@ const createGame = async () => {
     });
 
     if (response.ok) {
-      console.log('Game created successfully');
       router.push('/game');
     } else {
       console.error('Failed to create Game ');
       updateToastMessage('Failed to create Game');
     }
   } catch (error) {
-    console.error('Error during attack creation:', error);
+    console.error('Error during attack creation');
   }
 };
 
@@ -127,7 +119,7 @@ const getGamesList = async () => {
       console.error('Failed to fetch games list');
     }
   } catch (error) {
-    console.error('Error fetching games list:', error);
+    console.error('Error 404');
   }
 };
 
@@ -147,13 +139,12 @@ const joinGame = async (gameId) => {
     });
 
     if (response.status === 200) {
-      console.log('Entered the game successfully');
       router.push('/game');
     } else {
       console.error('Failed to enter the game');
     }
   } catch (error) {
-    console.error('Error joining the game:', error);
+    console.error('Error joining the game');
   }
 };
 

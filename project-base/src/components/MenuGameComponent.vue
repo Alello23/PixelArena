@@ -12,7 +12,7 @@ const leaveGame = async () => {
   try {
     const apiUrl = 'https://balandrau.salle.url.edu/i3/players/arenas/current';
     const token = store.getters.getplayer.token;
-    console.log('The value of the token is: ', token);
+    console.log('The value of the token is: ');
 
     const headers = {
       'Bearer': token,
@@ -29,7 +29,7 @@ const leaveGame = async () => {
 
       if (responseData.length > 0) {
         currentGameID = responseData[0].game_ID;
-        console.log('Current Game ID:', currentGameID);
+        console.log('Current Game ID:');
         deleteGame();
       }
 
@@ -37,7 +37,7 @@ const leaveGame = async () => {
       console.error('Error getting info');
     }
   } catch (error) {
-    console.error('Error during fetching info:', error);
+    console.error('Error during fetching info:');
   }
 };
 
@@ -51,7 +51,7 @@ const deleteGame = async () => {
 
     const apiUrl = `https://balandrau.salle.url.edu/i3/arenas/${currentGameID}/play`;
     const token = store.getters.getplayer.token;
-    console.log('The value of the token is: ', token);
+    console.log('The value of the token is');
 
     const headers = {
       'Bearer': token,
@@ -70,7 +70,7 @@ const deleteGame = async () => {
       console.error('Failed to leave game');
     }
   } catch (error) {
-    console.error('Error during leaving game:', error);
+    console.error('Error during leaving game');
   }
 };
 

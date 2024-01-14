@@ -64,7 +64,7 @@ onMounted(async () => {
       console.error('Failed to fetch attacks');
     }
   } catch (error) {
-    console.error('Error during attack fetch:');
+    console.error('Error during attack fetch');
     // Handle the error if needed
   }
 });

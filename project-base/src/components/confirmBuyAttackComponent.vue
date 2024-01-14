@@ -9,7 +9,7 @@ const buyAttack = async () => {
     const selectedStoreAttack = store.getters.getSelectedStoreAttack;
     const apiUrl = `https://balandrau.salle.url.edu/i3/shop/attacks/${selectedStoreAttack.attack_ID}/buy`;
     const token = store.getters.getplayer.token;
-    console.log('Attack send to equip:', selectedStoreAttack.attack_ID);
+    console.log('Attack send to equip:');
     const headers = {
       'Bearer': token,
       'Content-Type': 'application/json',

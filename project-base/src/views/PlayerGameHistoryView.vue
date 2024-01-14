@@ -7,7 +7,6 @@ import { useStore } from 'vuex';
 const store = useStore();
 const isSmallDevice = ref(false);
 const selectedProfile = store.getters.getSearchedplayer;
-console.log('Selected player:', selectedProfile.player_ID);
 
 const checkScreenSize = () => {
   isSmallDevice.value = window.innerWidth < 768; // Adjust the threshold as needed
