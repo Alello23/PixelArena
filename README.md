@@ -1,5 +1,5 @@
 # PixelArena
-
+![Mi proyecto](assets/PixelArena.jpeg)
 PixelArena is a web-based project built with Vue 3 and Vite, designed to create an interactive pixel art platform. The project showcases the power of modern web technologies in building performant and visually engaging applications. However, the project is currently non-functional due to the API being shut down. PixelArena was intended to be an online browser game, relying on an API for its core functionality.
 
 ## Features
